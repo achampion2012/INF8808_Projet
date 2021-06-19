@@ -3,69 +3,50 @@
 '''
 import pandas as pd
 
-TITLES = {
-    # pylint: disable=line-too-long
-    '1. Noyau villageois': 'Noyau villageois',
-    '2. Rue commerciale de quartier, d’ambiance ou de destination': 'Rue commerciale de quartier, d’ambiance ou de destination', # noqa : E501
-    '3. Rue transversale à une rue commerciale': 'Rue transversale à une rue commerciale', # noqa : E501
-    '4. Rue bordant un bâtiment public ou institutionnel  (tels qu’une école primaire ou secondaire, un cégep ou une université, une station de métro, un musée, théâtre, marché public, une église, etc.)': 'Rue bordant un bâtiment public ou institutionnel', # noqa : E501
-    '5. Rue en bordure ou entre deux parcs ou place publique': 'Rue en bordure ou entre deux parcs ou place publique', # noqa : E501
-    '6. Rue entre un parc et un bâtiment public ou institutionnel': 'Rue entre un parc et un bâtiment public ou institutionnel', # noqa : E501
-    '7. Passage entre rues résidentielles': 'Passage entre rues résidentielles'
-}
+def preprocessVisu1_1(df):
+    df['interaction'] = df['likes'] + df['comments'] + df['shares'] + df['love'] + df['wow'] + df['haha'] + df['sad'] + df['angry'] + df['care']
+    
+    dataPage = df.groupby(['page']).size().reset_index()
+    dataPage.columns = ['page','nombrePage']
+    
+    dataReaction = df.groupby(['page']).agg({'interaction':'sum'}).reset_index()
+    dataReaction.columns = ['page','nombreReaction']
+    
+    dataFollowers = df.groupby(['page']).agg({'followers':'max'}).reset_index()
+    
+    #dataReactionPost = df.groupby(['page']).agg({'interaction':'max'}).reset_index()
+    dataReactionPost = pd.concat([dataReaction['page'] , dataReaction['nombreReaction']/dataPage['nombrePage']],axis=1)
+    dataReactionPost.columns = ['page','interaction'] 
+    
+    result = pd.merge(dataPage, dataReaction, on='page', how='inner')
+    result = pd.merge(result, dataFollowers, on='page', how='inner')
+    result = pd.merge(result, dataReactionPost, on='page', how='inner')
+    return result
 
 
-def to_df(data):
-    '''
-        Converts the data to a pandas dataframe.
-
-        Args:
-            data: The data to convert
-        Returns:
-            my_df: The corresponding dataframe
-    '''
-    # TODO : Convert JSON formatted data to dataframe
-    return None
+def preprocessVisu1_1_V1(data,col=1):
+    data = preprocessVisu1_1(data)
+    maxTableCol = 4
+    colors = ['#1f77b4','#aec78e','#ff7f0e','#ffbb78','#2ca02c',
+            '#98df8a','#d62728','#ff9896','#9467bd','#c5b0d5',
+            '#8c564b','#c49c94','#e377c2','#f7b6d2','#7f7f7f',
+            '#c7c7c7','#bcbd22','#dbdb8d','#17becf','#9edae5']
 
 
-def update_titles(my_df):
-    '''
-        Updates the column "TYPE_SITE_INTERVENTION" with corresponding
-        values from the 'TITLES' dictionary (above).
-
-        Args:
-            my_df: The dataframe to update
-        Returns:
-            my_df: The dataframe with the appropriate replacements
-                made according to the 'TITLES' dictionary
-    '''
-    # TODO : Update the titles
-    return None
-
-
-def sort_df(my_df):
-    '''
-        Sorts the dataframe by the column "TYPE_SITE_INTERVENTION" in
-        alphabetical order.
-
-        Args:
-            my_df: The dataframe to sort
-        Returns:
-            my_df: The sorted dataframe
-    '''
-    # TODO : Sort the df
-    return None
-
-
-def get_neighborhoods(montreal_data):
-    '''
-        Gets the name of the neighborhoods in the dataset
-
-        Args:
-            montreal_data: The data to parse
-        Returns:
-            locations: An array containing the names of the
-                neighborhoods in the data set
-    '''
-    # TODO : Return the array of neighborhoods
-    return None
+    table = data.sort_values([data.columns[col]],ascending=[0]).head(20)['page'].rename(data.columns[col]).reset_index()
+    table = table.drop(['index'], axis=1)
+    table[data.columns[col]+"Color"] = colors
+    dictColor = dict(zip(table[data.columns[col]], table[data.columns[col]+"Color"]))
+    for i in range(1,maxTableCol+1,1):
+        if i != col:
+            Z = data.sort_values([data.columns[i]],ascending=[0]).reset_index()
+            Z.drop(['index'], axis=1)
+            temp = {}
+            for cell in table[data.columns[col]]:
+                temp[cell] = Z[Z['page']==cell].index.item()
+            temp= sorted(temp.items(), key=lambda x: x[1])
+            tempColor = [dictColor[name[0]] for name in temp]
+            temp= [name[0]+" ("+str(name[1]+1)+")" for name in temp]
+            table[data.columns[i]] = temp
+            table[data.columns[i]+"Color"] = tempColor
+    return table
