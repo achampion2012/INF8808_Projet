@@ -1,48 +1,68 @@
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import preprocess as preproc
+
 
 FontSize = 11
-HeadTable = ['nombrePage','nombreReaction','interaction','followers']
-Top = 20
-
-def Visual_1(data):
-    fig = make_subplots(column_widths=[0.2, 0.1,0.2, 0.1,0.2, 0.1,0.2],rows=1,horizontal_spacing=0.0, cols=7,specs=[[{"type": "table"},{"type": "scatter"},{"type": "table"},{"type": "scatter"},{"type": "table"},{"type": "scatter"},{"type": "table"}]])
-
-    fig.add_trace(go.Table(header=dict(font_size=FontSize,values=["<b> {} </b>".format(HeadTable[0])],align='center'), 
-    cells=dict(font=dict(color='white', size=FontSize),values=[data[HeadTable[0]]], align='center', height=25,line_color=[data['nombrePageColor']], fill_color=[data['nombrePageColor']])
-        ,),
-        row=1,col=1)
-
-    fig.add_trace(go.Table(header=dict(font_size=FontSize,values=["<b> {} </b>".format(HeadTable[1])],align='center'), 
-    cells=dict(font=dict(color='white', size=FontSize),values=[data[HeadTable[1]]], align='center', height=25,line_color=[data['nombreReactionColor']], fill_color=[data['nombreReactionColor']])
-        ,),
-        row=1,col=3)
-
-    fig.add_trace(go.Table(header=dict(font_size=FontSize,values=["<b> {} </b>".format(HeadTable[2])],align='center'), 
-    cells=dict(font=dict(color='white', size=FontSize),values=[data[HeadTable[2]]], align='center', height=25,line_color=[data['interactionColor']], fill_color=[data['interactionColor']])
-        ,),
-        row=1,col=5)
-
-    fig.add_trace(go.Table(header=dict(font_size=FontSize,values=["<b> {} </b>".format(HeadTable[3])],align='center'), 
-    cells=dict(font=dict(color='white', size=FontSize),values=[data[HeadTable[3]]], align='center', height=25,line_color=[data['followersColor']], fill_color=[data['followersColor']])
-        ,),
-        row=1,col=7)
+HeightCell = 25
+HeightHeader = 30
+WidthsTablePlot = 0.2
+WidthsArrowPlot = WidthsTablePlot/2
 
 
+def CreateTable(data,fig):
+    subplot = 1
+    Top = len(data.index)
 
-    fig.update_layout(dragmode=False,width=1650, height=710,plot_bgcolor="white")
+    for strHeader in data.columns:
+        if "Color" not in strHeader:
+            fig.add_trace(go.Table(header=dict(font_size=FontSize,values=["<b> {} </b>".format(strHeader)],
+            height=HeightHeader, align='center'), 
+            
+            cells=dict(font=dict(color='white', size=FontSize),
+            values=[data[strHeader]], 
+            align='center', height=HeightCell,
+            line_color=[data[strHeader+"Color"]], fill_color=[data[strHeader+"Color"]])),
+            row=1,col=subplot
+            )
+            subplot = subplot + 2
 
+    fig.update_layout(dragmode=False,width=1650, height=(Top*HeightCell + HeightHeader + 180))
+    return fig
+def CreateArrow(data,fig):
+    fig.update_layout(plot_bgcolor="white")
+    Top = len(data.index)
+    HeadTable = data.columns.tolist()
+    HeadTable = [StrHead  for StrHead in HeadTable if "Color" in StrHead]
     for col in range(len(HeadTable)-1):
         fig['layout']['xaxis'+str(col+1)].update(range=[0,1],showgrid=False,visible=False)
-        fig['layout']['yaxis'+str(col+1)].update(range=[0,21.18],tick0=0,dtick=0.5,showgrid=False,visible=False)
-        for cellColor in data[HeadTable[col]+'Color']:
+        fig['layout']['yaxis'+str(col+1)].update(range=[0,(Top*HeightCell+HeightHeader)/HeightCell],tick0=0,dtick=0.5,showgrid=False,visible=False)
+        for cellColor in data[HeadTable[col]]:
             fig.add_annotation(
                 x=1,
-                y=20 - data[data[HeadTable[col+1]+'Color']  == cellColor].index.tolist()[0] - 0.5,
+                y=Top - data[data[HeadTable[col+1]]  == cellColor].index.tolist()[0] - 0.5,
                 xref = "x"+str(col+1),yref = "y"+str(col+1),showarrow=True,
                 arrowhead=3,arrowsize=1,arrowwidth=3,
                 arrowcolor = cellColor,
                 ax=0,
-                ay=20 - data[data[HeadTable[col]+'Color'] == cellColor].index.tolist()[0] - 0.5,
+                ay=Top - data[data[HeadTable[col]] == cellColor].index.tolist()[0] - 0.5,
                 axref="x"+str(col+1),ayref='y'+str(col+1))
+    return fig
+def CreateSubPlot(data):
+    NumSubPlot = len(data.columns) - 1
+    ColumnWidths = [WidthsTablePlot , WidthsArrowPlot]* int(NumSubPlot//2) + [WidthsTablePlot]
+
+    fig = make_subplots(column_widths=ColumnWidths,
+    rows=1,cols=NumSubPlot,
+    horizontal_spacing=0.0,
+    specs=[[{"type": "table"},{"type": "scatter"}]*int(NumSubPlot//2) +[{"type": "table"}]])
+    
+
+    return fig
+def Visual_1(data):
+    data = preproc.SelectDataVisual1(data)
+    fig = CreateSubPlot(data)
+    fig = CreateTable(data,fig)
+    fig = CreateArrow(data,fig)
+
     return fig

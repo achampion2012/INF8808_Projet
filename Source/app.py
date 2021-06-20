@@ -17,15 +17,15 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 
 
-import preprocess as preproc
+
 import visualization_1
 
 app = dash.Dash(__name__)
 app.title = 'Project | INF8808'
 
 df = pd.read_csv('assets/data/facebookCanada2020.csv')
-data = preproc.preprocessVisu1_1_V1(df,3)
-fig = visualization_1.Visual_1(data)
+
+fig = visualization_1.Visual_1(df)
 
 
 app.layout = html.Div(

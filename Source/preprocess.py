@@ -3,7 +3,12 @@
 '''
 import pandas as pd
 
-def preprocessVisu1_1(df):
+Top = 10
+colors = ['#1f77b4','#aec78e','#ff7f0e','#ffbb78','#2ca02c',
+        '#98df8a','#d62728','#ff9896','#9467bd','#c5b0d5',
+        '#8c564b','#c49c94','#e377c2','#f7b6d2','#7f7f7f',
+        '#c7c7c7','#bcbd22','#dbdb8d','#17becf','#9edae5']
+def FilterData(df):
     df['interaction'] = df['likes'] + df['comments'] + df['shares'] + df['love'] + df['wow'] + df['haha'] + df['sad'] + df['angry'] + df['care']
     
     dataPage = df.groupby(['page']).size().reset_index()
@@ -14,7 +19,6 @@ def preprocessVisu1_1(df):
     
     dataFollowers = df.groupby(['page']).agg({'followers':'max'}).reset_index()
     
-    #dataReactionPost = df.groupby(['page']).agg({'interaction':'max'}).reset_index()
     dataReactionPost = pd.concat([dataReaction['page'] , dataReaction['nombreReaction']/dataPage['nombrePage']],axis=1)
     dataReactionPost.columns = ['page','interaction'] 
     
@@ -24,18 +28,13 @@ def preprocessVisu1_1(df):
     return result
 
 
-def preprocessVisu1_1_V1(data,col=1):
-    data = preprocessVisu1_1(data)
-    maxTableCol = 4
-    colors = ['#1f77b4','#aec78e','#ff7f0e','#ffbb78','#2ca02c',
-            '#98df8a','#d62728','#ff9896','#9467bd','#c5b0d5',
-            '#8c564b','#c49c94','#e377c2','#f7b6d2','#7f7f7f',
-            '#c7c7c7','#bcbd22','#dbdb8d','#17becf','#9edae5']
+def SelectColor(data,col=1):
+    maxTableCol = len(data.columns) - 1
 
 
-    table = data.sort_values([data.columns[col]],ascending=[0]).head(20)['page'].rename(data.columns[col]).reset_index()
+    table = data.sort_values([data.columns[col]],ascending=[0]).head(Top)['page'].rename(data.columns[col]).reset_index()
     table = table.drop(['index'], axis=1)
-    table[data.columns[col]+"Color"] = colors
+    table[data.columns[col]+"Color"] = colors[:Top]
     dictColor = dict(zip(table[data.columns[col]], table[data.columns[col]+"Color"]))
     for i in range(1,maxTableCol+1,1):
         if i != col:
@@ -50,3 +49,8 @@ def preprocessVisu1_1_V1(data,col=1):
             table[data.columns[i]] = temp
             table[data.columns[i]+"Color"] = tempColor
     return table
+
+def SelectDataVisual1(data):
+    data = FilterData(data)
+    data = SelectColor(data)
+    return data
