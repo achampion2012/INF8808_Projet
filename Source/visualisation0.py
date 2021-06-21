@@ -5,7 +5,6 @@
 
 
 import plotly.graph_objects as go
-import preprocessing as prepro
 
 
 def draw_average_lang():
