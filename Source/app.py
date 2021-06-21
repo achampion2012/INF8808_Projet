@@ -23,22 +23,47 @@ import viz
 import helper
 import callback
 
-import visualization_1
+from visualization_1 import Visual_1
 
 app = dash.Dash(__name__)
 app.title = 'Project | INF8808'
 
 df = pd.read_csv('assets/data/facebookCanada2020.zip')
 
-fig = visualization_1.Visual_1(df)
+fig1 = Visual_1(df)
 
 
 app.layout = html.Div(
-    className='test',
+    className='content',
     children=[
-        dcc.Graph(figure=fig, id='graph',
-                  config=dict(
-                      showTips=False,
-                      showAxisDragHandles=False,
-                      doubleClick=False,
-                      displayModeBar=False)),])
+        html.Header(children=[
+            html.H1('Facebook in 2020'),
+            html.H2('An analysis of the top 300 000 posts in Canada on Facebook during the year 2020')
+        ]),
+
+        # first figure
+        html.Div(children=[
+            html.Header("First figure header"),
+            dcc.Graph(figure=fig1, id='graph1',
+                      config=dict(
+                          showTips=False,
+                          showAxisDragHandles=False,
+                          doubleClick=False,
+                          displayModeBar=False)),
+            html.Footer("First figure footer")
+            ])
+
+        # second figure
+        # html.Div(children=[
+        #     html.Header("First figure header"),
+        #     dcc.Graph(figure=fig1, id='graph1',
+        #               config=dict(
+        #                   showTips=False,
+        #                   showAxisDragHandles=False,
+        #                   doubleClick=False,
+        #                   displayModeBar=False)),
+        #     html.Footer("First figure footer")
+        # ])
+
+
+    ])
