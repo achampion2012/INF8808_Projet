@@ -86,19 +86,8 @@ app.layout = html.Div(
                           doubleClick=False,
                           displayModeBar=False)),
             html.Footer("")
-            ])
+            ]),
 
-        # second figure
-        # html.Div(children=[
-        #     html.Header("First figure header"),
-        #     dcc.Graph(figure=fig1, id='graph1',
-        #               config=dict(
-        #                   showTips=False,
-        #                   showAxisDragHandles=False,
-        #                   doubleClick=False,
-        #                   displayModeBar=False)),
-        #     html.Footer("First figure footer")
-        # ])
 
 
         html.Div(children=[
