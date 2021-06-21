@@ -24,6 +24,8 @@ import helper
 import callback
 
 from visualization_1 import Visual_1
+from visualisation0 import draw_average_type
+from visualisation0 import draw_average_lang
 
 app = dash.Dash(__name__)
 app.title = 'Project | INF8808'
