@@ -30,9 +30,9 @@ from visualisation0 import draw_average_lang
 app = dash.Dash(__name__)
 app.title = 'Project | INF8808'
 
-df = pd.read_csv('assets/data/facebookCanada2020.zip')
+#df = pd.read_csv('assets/data/facebookCanada2020.zip')
 
-fig1 = Visual_1(df)
+#fig1 = Visual_1(df)
 fig00 = draw_average_type()
 fig01 = draw_average_lang()
 

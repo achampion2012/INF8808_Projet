@@ -1,5 +1,5 @@
 import plotly.graph_objects as go
-import preprocessing as prepro
+import preprocess as prepro
 
 
 def draw_line_chart_followers_months(df, fbid):
