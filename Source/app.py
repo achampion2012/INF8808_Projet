@@ -65,15 +65,28 @@ app.layout = html.Div(
 
         # first figure
         html.Div(children=[
-            html.Header("Type de publication"),
-            dcc.Graph(figure=fig00, id='graph1',
+            html.H2("Mise en contexte"),
+            html.H3("Les pages canadiennes ont principalement publié des photos, avec près de la moitié des publications appartenant à ce type."),
+            dcc.Graph(figure=fig00, id='graph2',
                       config=dict(
                           showTips=False,
                           showAxisDragHandles=False,
                           doubleClick=False,
                           displayModeBar=False)),
-            html.Footer("First figure footer")
+            html.Footer("")
             ]),
+
+        #second figure
+        html.Div(children=[
+            html.H3("Comme on pouvait s’y attendre, les pages canadiennes publient principalement en anglais. Cependant, des publications ont été faites dans plus de 89 langues !"),
+            dcc.Graph(figure=fig01, id='graph1',
+                      config=dict(
+                          showTips=False,
+                          showAxisDragHandles=False,
+                          doubleClick=False,
+                          displayModeBar=False)),
+            html.Footer("")
+            ])
 
         # second figure
         # html.Div(children=[
