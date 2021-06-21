@@ -54,3 +54,36 @@ def SelectDataVisual1(data):
     data = FilterData(data)
     data = SelectColor(data)
     return data
+
+def filter_by_fbid(dataframe, fbid):
+    return dataframe.loc[dataframe['fbid'] == fbid].copy()
+
+
+
+#Preprocess pour vizualisation_2 (Rami)
+def filter_by_month(dataframe):
+    date_split = dataframe['datecreated'].str.split('-', expand=True)
+    dataframe["month"] = date_split[1]
+
+    int_months = list(range(1,13))
+    str_months = ["{:0=2d}".format(x) for x in int_months]
+    dataframe['month'] = pd.Categorical(dataframe['month'], categories=str_months, ordered=True)
+
+    dataframe.sort_values('month')
+
+    return dataframe.sort_values('month').copy()
+
+def mean_followers_bymonth(df):
+    return df.groupby('month')['followers'].mean()
+
+def count_post_bymonth(df):
+    return df.groupby('month')['fbid'].count()
+
+def sum_reactions_bymonth(df):
+    temp_df = df.groupby('month', as_index=False).sum()
+    return temp_df.drop(columns=['Unnamed: 0', 'fbid', 'pagelikes', 'followers'])
+
+def count_post_type(df):
+    return df.groupby('type', as_index=False)['fbid'].count()
+
+
