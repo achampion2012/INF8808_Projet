@@ -1,7 +1,7 @@
 body {
     background-color: #ffffff;
     margin: 0;
-    padding: 0;
+    padding: 30px;
     display: flex;
     align-items: center;
 }
@@ -59,13 +59,25 @@ button:hover, button:active {
 h1 {
     color:rgb(59,89,152);
     font-family: 'Arial', 'serif';
-    font-size: 56px;
+    font-size: 50px;
     margin: 0;
     font-weight: normal;
+    text-align: center;
 }
 
 h2 {
     font-weight: normal;
-    color:rgb(0, 0, 0);
+    color:rgb(59, 89, 152);
+    font-size: 20px;
     font-family: 'Arial', 'serif';
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h3 {
+    font-weight: normal;
+    color:rgb(0, 0, 0);
+    font-size:15px;
+    font-family: 'Arial', 'serif';
+    text-align: justify;
 }
