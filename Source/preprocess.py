@@ -54,3 +54,25 @@ def SelectDataVisual1(data):
     data = FilterData(data)
     data = SelectColor(data)
     return data
+
+def DatecreatedToDateTime(df):
+    df.datecreated = pd.to_datetime(df.datecreated)
+    return df
+
+def WeekHourWeekday(df):
+    df['week'] = df.datecreated.dt.week
+    df['hour'] = df.datecreated.dt.hour
+    df['weekday'] = df.datecreated.dt.weekday
+    return df
+
+def WeekHourInteraction(df):
+    df = df[['week', 'hour', 'interaction']]
+    df = df.groupby(['week', 'hour'], as_index=False).mean()
+    df = df.pivot('hour', 'week', 'interaction')
+    return df
+
+def WeekdayHourInteraction(df):
+    df = df[['weekday', 'hour', 'interaction']]
+    df = df.groupby(['weekday', 'hour'], as_index=False).mean()
+    df = df.pivot('hour', 'weekday', 'interaction')
+    return df
