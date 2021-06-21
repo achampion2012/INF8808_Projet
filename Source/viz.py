@@ -31,17 +31,18 @@ def add_choro_trace(fig, montreal_data, locations, z_vals, colorscale):
     return None
 
 
-def add_scatter_traces(fig, street_df):
+def add_scatter_traces(fig, df):
     '''
         Adds the scatter trace, representing Montreal's pedestrian paths.
 
         Args:
             fig: The figure to add the scatter trace to
-            street_df: The dataframe containing the information on the
+            df: The dataframe containing the information on the
                 pedestrian paths to display
         Returns:
             The figure now containing the scatter trace
 
     '''
-    # TODO : Add the scatter markers to the map base
-    return None
+    fig.add_trace(go.Scatter(x=df["followers"], y=df["reaction"], opacity=0.2))
+    fig.update_layout(title="Pas de corrélation entre nb de followers et nombre de reaction")
+    return fig

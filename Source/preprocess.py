@@ -15,7 +15,7 @@ TITLES = {
 }
 
 
-def to_df(data):
+def add_reaction(df):
     '''
         Converts the data to a pandas dataframe.
 
@@ -24,11 +24,11 @@ def to_df(data):
         Returns:
             my_df: The corresponding dataframe
     '''
-    # TODO : Convert JSON formatted data to dataframe
+    df["reaction"] = df["likes"]+df["love"]+df["wow"]+df["haha"]+df["sad"]+df["angry"]+df["care"]
     return None
 
 
-def update_titles(my_df):
+def group_pages(df):
     '''
         Updates the column "TYPE_SITE_INTERVENTION" with corresponding
         values from the 'TITLES' dictionary (above).
@@ -39,8 +39,9 @@ def update_titles(my_df):
             my_df: The dataframe with the appropriate replacements
                 made according to the 'TITLES' dictionary
     '''
-    # TODO : Update the titles
-    return None
+    gdf = df.groupby(["page"]).mean()
+    gdf["nb_post"] = df.groupby(["page"]).size()
+    return gdf
 
 
 def sort_df(my_df):
