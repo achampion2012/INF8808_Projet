@@ -28,7 +28,7 @@ import callback
 app = dash.Dash(__name__)
 app.title = 'Projet Final | INF8808'
 
-df = pd.read_csv("Source/assets/data/facebookCanada2020.zip")
+df = pd.read_csv("./assets/data/facebookCanada2020.zip")
 
 preproc.add_reaction(df)
 
