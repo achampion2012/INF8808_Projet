@@ -31,20 +31,22 @@ app.title = 'Project | INF8808'
 df = pd.read_csv('assets/data/facebookCanada2020.zip')
 
 fig1 = Visual_1(df)
+fig00 = draw_average_type()
+fig01 = draw_average_lang()
 
 
 app.layout = html.Div(
     className='content',
     children=[
         html.Header(children=[
-            html.H1('Facebook in 2020'),
-            html.H2('An analysis of the top 300 000 posts in Canada on Facebook during the year 2020')
+            html.H1('Les pages Facebook Canadiennes en 2020'),
+            html.H2('Que s’est-il passé sur Facebook en 2020 ? Quelles sont les pages canadiennes qui se sont démarquées et quelles sont les caractéristiques de ces pages ? L’article suivant vous propose de plonger dans les données de 3,6 millions de publications, c’est-à-dire les 300,000 ayant reçues le plus de likes à chaque mois durant l’année 2020. ')
         ]),
 
         # first figure
         html.Div(children=[
-            html.Header("First figure header"),
-            dcc.Graph(figure=fig1, id='graph1',
+            html.Header("Type de publication"),
+            dcc.Graph(figure=fig00, id='graph1',
                       config=dict(
                           showTips=False,
                           showAxisDragHandles=False,
