@@ -59,7 +59,7 @@ app.layout = html.Div(
     className='content',
     children=[
         html.Header(children=[
-            html.H1('Les pages Facebook Canadiennes en 2020'),
+            html.H1('Les pages Facebook Canadiennes en 2020 TEST'),
             html.H3('Que s’est-il passé sur Facebook en 2020 ? Quelles sont les pages canadiennes qui se sont démarquées et quelles sont les caractéristiques de ces pages ? L’article suivant vous propose de plonger dans les données de 3,6 millions de publications, c’est-à-dire les 300,000 ayant reçues le plus de likes à chaque mois durant l’année 2020. ')
         ]),
 
