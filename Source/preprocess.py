@@ -67,12 +67,12 @@ def WeekHourWeekday(df):
 
 def WeekHourInteraction(df):
     df = df[['week', 'hour', 'interaction']]
-    df = df.groupby(['week', 'hour'], as_index=False).mean()
+    df = df.groupby(['week', 'hour'], as_index=False).count()
     df = df.pivot('hour', 'week', 'interaction')
     return df
 
 def WeekdayHourInteraction(df):
     df = df[['weekday', 'hour', 'interaction']]
-    df = df.groupby(['weekday', 'hour'], as_index=False).mean()
+    df = df.groupby(['weekday', 'hour'], as_index=False).count()
     df = df.pivot('hour', 'weekday', 'interaction')
     return df
