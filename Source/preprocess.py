@@ -55,6 +55,28 @@ def SelectDataVisual1(data):
     data = SelectColor(data)
     return data
 
+def datecreated_to_datetime(df):
+    df.datecreated = pd.to_datetime(df.datecreated)
+    return df
+
+def week_hour_weekday(df):
+    df['week'] = df.datecreated.dt.week
+    df['hour'] = df.datecreated.dt.hour
+    df['weekday'] = df.datecreated.dt.weekday
+    return df
+
+def week_hour_publication(df):
+    df = df[['week', 'hour', 'interaction']]
+    df = df.groupby(['week', 'hour'], as_index=False).count()
+    df = df.pivot('hour', 'week', 'interaction')
+    return df
+
+def weekday_hour_publication(df):
+    df = df[['weekday', 'hour', 'interaction']]
+    df = df.groupby(['weekday', 'hour'], as_index=False).count()
+    df = df.pivot('hour', 'weekday', 'interaction')
+    return df
+
 def filter_by_fbid(dataframe, fbid):
     return dataframe.loc[dataframe['fbid'] == fbid].copy()
 
