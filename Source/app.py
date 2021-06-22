@@ -56,7 +56,7 @@ fig_hm_weekday = heatmaps.get_heatmap_weekday(df_hm_weekday)
 
 
 #Creates dropdown options {pagename: fbid}
-df_pagename_fbid = pd.read_csv('assets/data/pagename_fbid.csv')
+df_pagename_fbid = pd.read_csv('assets/data/pagename_fbid_reduced.csv')
 list_of_dicts = []
 for index, row in df_pagename_fbid.iterrows():
     temp = {
@@ -195,17 +195,17 @@ app.layout = html.Div(
                 ])
         ])
 
-# @app.callback(
-#     [Output('line-chart-followers', 'figure'), 
-#     Output('line-chart-posts', 'figure'),
-#     Output('bar-chart-reactions', 'figure'),
-#     Output('pie-chart-type', 'figure')],
-#     [Input('fb-pages', 'value')]
-# )
-# def update_output(value):
-#     line_chart_followers = visualization_2.draw_line_chart_followers_months(df, value)
-#     line_chart_posts = visualization_2.draw_line_chart_publications_months(df, value)
-#     bar_chart_reactions = visualization_2.draw_stacked_bar_chart_reactions_months(df, value)
-#     pie_chart_type = visualization_2.draw_piechart_type(df, value)
+@app.callback(
+    [Output('line-chart-followers', 'figure'), 
+    Output('line-chart-posts', 'figure'),
+    Output('bar-chart-reactions', 'figure'),
+    Output('pie-chart-type', 'figure')],
+    [Input('fb-pages', 'value')]
+)
+def update_output(value):
+    line_chart_followers = visualization_2.draw_line_chart_followers_months(df, value)
+    line_chart_posts = visualization_2.draw_line_chart_publications_months(df, value)
+    bar_chart_reactions = visualization_2.draw_stacked_bar_chart_reactions_months(df, value)
+    pie_chart_type = visualization_2.draw_piechart_type(df, value)
 
-#     return line_chart_followers, line_chart_posts, bar_chart_reactions, pie_chart_type
+    return line_chart_followers, line_chart_posts, bar_chart_reactions, pie_chart_type
