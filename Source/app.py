@@ -201,7 +201,7 @@ app.layout = html.Div(
     Output('line-chart-posts', 'figure'),
     Output('bar-chart-reactions', 'figure'),
     Output('pie-chart-type', 'figure')],
-    Input('fb-pages', 'value')
+    [Input('fb-pages', 'value')]
 )
 def update_output(value):
     line_chart_followers = visualization_2.draw_line_chart_followers_months(df, value)
