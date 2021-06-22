@@ -102,6 +102,7 @@ app.layout = html.Div(
         
         #third figure
         html.Div(children=[
+            html.H2("Meilleures pages canadiennes en 2020"),
             html.H3("Un ranking chart présente d’abord les pages s’étant démarquées selon différentes catégories. Il est ensuite possible de sélectionner une seule page et d’aller voir en détail pourquoi elle s’est démarquée. Cela permet aussi de voir son ranking pour toutes les catégories, même si elle n’était pas dans le top 20"),
             dcc.Graph(figure=fig02, id='graph02_1',
                       config=dict(
