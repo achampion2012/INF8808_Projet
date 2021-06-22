@@ -60,7 +60,7 @@ df_pagename_fbid = pd.read_csv('assets/data/pagename_fbid.csv')
 list_of_dicts = []
 for index, row in df_pagename_fbid.iterrows():
     temp = {
-        'labels' : '{}'.format(row['page']), 
+        'label' : '{}'.format(row['page']), 
         'value' : '{}'.format(row['fbid'])
         }
     list_of_dicts.append(temp)
