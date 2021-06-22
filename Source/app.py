@@ -140,7 +140,8 @@ app.layout = html.Div(
                 id='fb-pages',
                 options=list_of_dicts,
                 placeholder="Select a page",
-                clearable=False
+                clearable=False,
+                style={color:black}
             ),
             html.Div(
                 children=[
