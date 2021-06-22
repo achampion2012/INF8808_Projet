@@ -51,8 +51,9 @@ def SelectColor(data,col=1):
     return table
 
 def SelectDataVisual1(data):
-    data = FilterData(data)
-    data = SelectColor(data)
+    #data = FilterData(data)
+    #data = SelectColor(data)
+    data = pd.read_csv('assets/data/temporaryDataVisual1.csv').drop(['Unnamed: 0'], axis=1)
     return data
 
 def datecreated_to_datetime(df):

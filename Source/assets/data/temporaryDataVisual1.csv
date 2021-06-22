@@ -1,0 +1,11 @@
+,nombrePage,nombrePageColor,nombreReaction,nombreReactionColor,followers,followersColor,interaction,interactionColor
+0,CTV News,#1f77b4,theScore (6),#ffbb78,theScore (208),#ffbb78,Screen Rant (1294),#c5b0d5
+1,La Parole Vivante,#aec78e,La Parole Vivante (10),#aec78e,The Vintage News (274),#98df8a,theScore (1424),#ffbb78
+2,War History Online,#ff7f0e,Screen Rant (11),#c5b0d5,CBC News (307),#d62728,TVA Nouvelles (1791),#9467bd
+3,theScore,#ffbb78,TVA Nouvelles (18),#9467bd,Global News (349),#2ca02c,La Parole Vivante (2210),#aec78e
+4,Global News,#2ca02c,CTV News (28),#1f77b4,War History Online (390),#ff7f0e,CBC News (2468),#d62728
+5,The Vintage News,#98df8a,CBC News (29),#d62728,Screen Rant (429),#c5b0d5,Global News (3443),#2ca02c
+6,CBC News,#d62728,Global News (38),#2ca02c,La Parole Vivante (464),#aec78e,CTV News (3582),#1f77b4
+7,Le Journal de Montréal,#ff9896,War History Online (82),#ff7f0e,TVA Nouvelles (606),#9467bd,Le Journal de Montréal (4659),#ff9896
+8,TVA Nouvelles,#9467bd,Le Journal de Montréal (83),#ff9896,CTV News (719),#1f77b4,War History Online (6087),#ff7f0e
+9,Screen Rant,#c5b0d5,The Vintage News (105),#98df8a,Le Journal de Montréal (963),#ff9896,The Vintage News (6806),#98df8a
