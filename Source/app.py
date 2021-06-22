@@ -147,7 +147,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         id='line-chart-followers',
                         className='graph',
-                        figure=vizualisation_2.empty_fig(),
+                        figure=visualization_2.empty_fig(),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
@@ -158,7 +158,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         id='line-chart-posts',
                         className='graph',
-                        figure=vizualisation_2.empty_fig(),
+                        figure=visualization_2.empty_fig(),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
@@ -170,7 +170,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         id='bar-chart-reactions',
                         className='graph',
-                        figure=vizualisation_2.empty_fig(),
+                        figure=visualization_2.empty_fig(),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
@@ -182,7 +182,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         id='pie-chart-type',
                         className='graph',
-                        figure=vizualisation_2.empty_fig(),
+                        figure=visualization_2.empty_fig(),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
