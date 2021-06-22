@@ -190,7 +190,7 @@ app.layout = html.Div(
                             doubleClick=False,
                             displayModeBar=False)
                             )
-                    ]
+                    ])
                 ])
         ])
 
