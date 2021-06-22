@@ -141,7 +141,7 @@ app.layout = html.Div(
                 options=list_of_dicts,
                 placeholder="Select a page",
                 clearable=False,
-                style={color:black}
+                style={'color':'black'}
             ),
             html.Div(
                 children=[
