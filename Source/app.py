@@ -28,6 +28,7 @@ from visualization_1 import Visual_1
 from visualisation0 import draw_average_type
 from visualisation0 import draw_average_lang
 import visualization_2
+from visualisation2_1 import draw_scatter_followers
 
 app = dash.Dash(__name__)
 app.title = 'Project | INF8808'
@@ -54,6 +55,8 @@ df_hm_weekday = pd.read_csv('assets/data/hm_weekday.csv', index_col=0)
 fig_hm_week = heatmaps.get_heatmap_week(df_hm_week)
 fig_hm_weekday = heatmaps.get_heatmap_weekday(df_hm_weekday)
 
+df_scatter = pd.read_csv('assets/data/scatter.csv', index_col=0)
+fig2_1 = draw_scatter_followers(df_scatter)
 
 #Creates dropdown options {pagename: fbid}
 df_pagename_fbid = pd.read_csv('assets/data/pagename_fbid_reduced.csv')
@@ -111,7 +114,18 @@ app.layout = html.Div(
             html.Footer("")
             ]),
 
-
+        html.Div(children=[
+            html.H2("Comment maximiser les reactions sur ses posts Facebook ?"),
+            html.H3("Est-ce que le nombre de followers de la page est impactant ?"),
+            dcc.Graph(figure=fig2_1, id='graph2_1',
+                      config=dict(
+                          showTips=False,
+                          showAxisDragHandles=False,
+                          doubleClick=False,
+                          displayModeBar=False)),
+            html.H3("On remarque qu'il n'y a pas de lien évident entre les followers et le nombre de réaction, il est donc possible d'avoir un grand nombre de réaction même avec peu de followers !"),
+            html.Footer("")
+            ]),
 
         html.Div(children=[
             html.Header("Number of publications for each week of 2020"),
