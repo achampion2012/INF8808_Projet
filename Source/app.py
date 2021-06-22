@@ -27,18 +27,16 @@ import heatmaps
 from visualization_1 import Visual_1
 from visualisation0 import draw_average_type
 from visualisation0 import draw_average_lang
-import visualization_2
-from visualisation2_1 import draw_scatter_followers
 
 app = dash.Dash(__name__)
 app.title = 'Project | INF8808'
 
-df = pd.read_csv('assets/data/reduced_db.zip')
+#df = pd.read_csv('assets/data/facebookCanada2020.zip')
 
-#fig1 = Visual_1(df)
 fig00 = draw_average_type()
 fig01 = draw_average_lang()
-
+todelete = []
+fig02 = Visual_1(todelete)
 
 # Heatmaps
 #   df = pd.read_csv('../src/assets/data/facebookCanada2020.csv', index_col=0)
@@ -55,25 +53,13 @@ df_hm_weekday = pd.read_csv('assets/data/hm_weekday.csv', index_col=0)
 fig_hm_week = heatmaps.get_heatmap_week(df_hm_week)
 fig_hm_weekday = heatmaps.get_heatmap_weekday(df_hm_weekday)
 
-df_scatter = pd.read_csv('assets/data/scatter.csv', index_col=0)
-fig2_1 = draw_scatter_followers(df_scatter)
-
-#Creates dropdown options {pagename: fbid}
-df_pagename_fbid = pd.read_csv('assets/data/pagename_fbid_reduced.csv')
-list_of_dicts = []
-for index, row in df_pagename_fbid.iterrows():
-    temp = {
-        'label' : '{}'.format(row['page']), 
-        'value' : '{}'.format(row['fbid'])
-        }
-    list_of_dicts.append(temp)
 
 
 app.layout = html.Div(
     className='content',
     children=[
         html.Header(children=[
-            html.H1('Les pages Facebook canadiennes en 2020'),
+            html.H1('Les pages Facebook Canadiennes en 2020'),
             html.H3('Que s’est-il passé sur Facebook en 2020 ? Quelles sont les pages canadiennes qui se sont démarquées et quelles sont les caractéristiques de ces pages ? L’article suivant vous propose de plonger dans les données de 3,6 millions de publications, c’est-à-dire les 300,000 ayant reçues le plus de likes à chaque mois durant l’année 2020. ')
         ]),
 
@@ -102,19 +88,19 @@ app.layout = html.Div(
             html.Footer("")
             ]),
         
-
+                #second figure
         html.Div(children=[
-            html.H2("Comment maximiser les réactions sur ses posts Facebook ?"),
-            html.H3("Pour les gestionnaires de pages, le but est d'atteindre le plus grand nombre de personnes possible par publication. Quelles sont donc les conditions optimales pour atteindre cet objectif? Est-ce que le nombre de followers de la page impacte le niveau d'interaction?"),
-            dcc.Graph(figure=fig2_1, id='graph2_1',
+            html.H3("Comme on pouvait s’y attendre, les pages canadiennes publient principalement en anglais. Cependant, des publications ont été faites dans plus de 89 langues !"),
+            dcc.Graph(figure=fig01, id='graph1',
                       config=dict(
                           showTips=False,
                           showAxisDragHandles=False,
                           doubleClick=False,
                           displayModeBar=False)),
-            html.H3("Étonnament, on remarque qu'il n'y a pas de lien évident entre les followers et le nombre de réaction, il est donc possible d'avoir un grand nombre de réaction même avec peu de followers !"),
             html.Footer("")
             ]),
+
+
 
         html.Div(children=[
             html.Header("Number of publications for each week of 2020"),
@@ -127,89 +113,15 @@ app.layout = html.Div(
             #html.Footer("First figure footer")
             ]),
 
-            html.Div(children=[
-                html.Header("Number of publications for each weekday of 2020"),
-                dcc.Graph(figure=fig_hm_weekday, id='fig_hm_weekday',
-                          config=dict(
-                              showTips=False,
-                              showAxisDragHandles=False,
-                              doubleClick=False,
-                              displayModeBar=False)),
-                #html.Footer("First figure footer")
-                ]),
-        
-        html.Div([
-            dcc.Dropdown(
-                id='fb-pages',
-                options=list_of_dicts,
-                placeholder="Select a page",
-                clearable=False,
-                style={'color':'black'},
-                value=273000682715952
-            ),
-            html.Div(
-                children=[
-                    dcc.Graph(
-                        id='line-chart-followers',
-                        className='graph',
-                        figure=visualization_2.empty_fig(),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False)
-                            ),
-                    dcc.Graph(
-                        id='line-chart-posts',
-                        className='graph',
-                        figure=visualization_2.empty_fig(),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False)
-                            ),
+        html.Div(children=[
+            html.Header("Un ranking chart présente d’abord les pages s’étant démarquées selon différentes catégories. Il est ensuite possible de sélectionner une seule page et d’aller voir en détail pourquoi elle s’est démarquée. Cela permet aussi de voir son ranking pour toutes les catégories, même si elle n’était pas dans le top 10"),
+            dcc.Graph(figure=fig02, id='fig_visualisation1',
+                      config=dict(
+                          showTips=False,
+                          showAxisDragHandles=False,
+                          doubleClick=False,
+                          displayModeBar=False)),
+            #html.Footer("First figure footer")
+            ]),
 
-                    dcc.Graph(
-                        id='bar-chart-reactions',
-                        className='graph',
-                        figure=visualization_2.empty_fig(),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False)
-                            ),
-
-                    dcc.Graph(
-                        id='pie-chart-type',
-                        className='graph',
-                        figure=visualization_2.empty_fig(),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False)
-                            )
-                    ])
-                ])
-        ])
-
-@app.callback(
-    [Output('line-chart-followers', 'figure'), 
-    Output('line-chart-posts', 'figure'),
-    Output('bar-chart-reactions', 'figure'),
-    Output('pie-chart-type', 'figure')],
-    [Input('fb-pages', 'value')]
-)
-def update_output(value):
-    line_chart_followers = visualization_2.draw_line_chart_followers_months(df, value)
-    line_chart_posts = visualization_2.draw_line_chart_publications_months(df, value)
-    bar_chart_reactions = visualization_2.draw_stacked_bar_chart_reactions_months(df, value)
-    pie_chart_type = visualization_2.draw_piechart_type(df, value)
-
-    return line_chart_followers, line_chart_posts, bar_chart_reactions, pie_chart_type
+    ])
