@@ -33,12 +33,10 @@ app.title = 'Project | INF8808'
 
 #df = pd.read_csv('assets/data/facebookCanada2020.zip')
 
-
+#fig1 = Visual_1(df)
 fig00 = draw_average_type()
 fig01 = draw_average_lang()
 
-todelete = []
-fig02 = Visual_1(todelete)
 
 # Heatmaps
 #   df = pd.read_csv('../src/assets/data/facebookCanada2020.csv', index_col=0)
@@ -124,16 +122,7 @@ app.layout = html.Div(
                               doubleClick=False,
                               displayModeBar=False)),
                 #html.Footer("First figure footer")
-                ]),
-            html.Div(children=[
-                html.Header("Un ranking chart présente d’abord les pages s’étant démarquées selon différentes catégorie. Il est ensuite possible de sélectionner une seule page et d’aller voir en détail pourquoi elle s’est démarquée. Cela permet aussi de voir son ranking pour toutes les catégories, même si elle n’était pas dans le top 20"),
-                dcc.Graph(figure=fig02, id='fig_Visul01',
-                          config=dict(
-                              showTips=False,
-                              showAxisDragHandles=False,
-                              doubleClick=False,
-                              displayModeBar=False)),
-                #html.Footer("First figure footer")
                 ])
+
 
     ])
