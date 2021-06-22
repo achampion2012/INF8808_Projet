@@ -104,6 +104,10 @@ app.layout = html.Div(
         html.Div(children=[
             html.H2("Meilleures pages canadiennes en 2020"),
             html.H3("Un ranking chart présente d’abord les pages s’étant démarquées selon différentes catégories. Il est ensuite possible de sélectionner une seule page et d’aller voir en détail pourquoi elle s’est démarquée. Cela permet aussi de voir son ranking pour toutes les catégories, même si elle n’était pas dans le top 20"),
+            html.H3("Absolute number of posts: Ici, on regarde les pages qui ont le plus posté en 2020. Ce sont principalement des pages de nouvelles."),
+            html.H3("Absolute number of reactions: On regarde les pages qui ont généré le total de réactions le plus grand en 2020."),
+            html.H3("Reactions per post: On divise le nombre de réactions par le nombre de post d’une page pour avoir le nombre de réactions moyen par publication."),
+            html.H3("Total followers: On classe les pages en fonction du nombre de followers moyen qu’ils ont eu dans l’année."),
             dcc.Graph(figure=fig02, id='graph02_1',
                       config=dict(
                           showTips=False,
@@ -127,7 +131,7 @@ app.layout = html.Div(
             ]),
 
         html.Div(children=[
-            html.Header("Number of publications for each week of 2020"),
+            html.Header("Nombre de publications par semaine en 2020"),
             dcc.Graph(figure=fig_hm_week, id='fig_hm_week',
                       config=dict(
                           showTips=False,
@@ -138,7 +142,7 @@ app.layout = html.Div(
             ]),
 
             html.Div(children=[
-                html.Header("Number of publications for each weekday of 2020"),
+                html.Header("Nombre de publications selon le jour de la semaine en 2020"),
                 dcc.Graph(figure=fig_hm_weekday, id='fig_hm_weekday',
                           config=dict(
                               showTips=False,
@@ -159,8 +163,8 @@ app.layout = html.Div(
 #             ),
             html.Div(
                 children=[
-                    html.H2("Example: Data on Jennifer Lopez' facebook page"),
-                    html.Header("Average number of followers per month"),
+                    html.H2("Cette section présente des données plus en détail pour une seule page. Il sera possible de sélectionner la page dans un menu déroulant."),
+                    html.Header("Nombre de followers moyen par mois"),
                     dcc.Graph(
                         id='line-chart-followers',
                         className='graph',
@@ -172,7 +176,7 @@ app.layout = html.Div(
                             doubleClick=False,
                             displayModeBar=False)
                             ),
-                    html.Header("Number of posts made per month"),
+                    html.Header("Nombre de publications par mois"),
                     dcc.Graph(
                         id='line-chart-posts',
                         className='graph',
@@ -184,7 +188,7 @@ app.layout = html.Div(
                             doubleClick=False,
                             displayModeBar=False)
                             ),
-                    html.Header("Number of total reactions per month"),
+                    html.Header("Nombre total de reactions par mois"),
                     dcc.Graph(
                         id='bar-chart-reactions',
                         className='graph',
@@ -196,7 +200,7 @@ app.layout = html.Div(
                             doubleClick=False,
                             displayModeBar=False)
                             ),
-                    html.Header("Type of post"),
+                    html.Header("Type de publication"),
                     dcc.Graph(
                         id='pie-chart-type',
                         className='graph',
