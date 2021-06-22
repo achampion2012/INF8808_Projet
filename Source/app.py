@@ -165,7 +165,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         id='line-chart-followers',
                         className='graph',
-                        figure=visualization_2.draw_line_chart_followers_months(df1, 100044362032719),
+                        figure=visualization_2.draw_line_chart_followers_months(df, 100044362032719),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
@@ -177,7 +177,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         id='line-chart-posts',
                         className='graph',
-                        figure=visualization_2.draw_line_chart_publications_months(df1, 100044362032719),
+                        figure=visualization_2.draw_line_chart_publications_months(df, 100044362032719),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
@@ -189,7 +189,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         id='bar-chart-reactions',
                         className='graph',
-                        figure=visualization_2.draw_stacked_bar_chart_reactions_months(df1, 100044362032719),
+                        figure=visualization_2.draw_stacked_bar_chart_reactions_months(df, 100044362032719),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
@@ -201,7 +201,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         id='pie-chart-type',
                         className='graph',
-                        figure=visualization_2.draw_piechart_type(df1, 100044362032719),
+                        figure=visualization_2.draw_piechart_type(df, 100044362032719),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
