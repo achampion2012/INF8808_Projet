@@ -116,43 +116,8 @@ app.layout = html.Div(
                           displayModeBar=False)),
             html.Footer("")
             ]),
-
-        html.Div(children=[
-            html.H2("Comment maximiser les réactions sur ses posts Facebook ?"),
-            html.H3("Pour les gestionnaires de pages, le but est d'atteindre le plus grand nombre de personnes possible par publication. Quelles sont donc les conditions optimales pour atteindre cet objectif? Est-ce que le nombre de followers de la page impacte le niveau d'interaction?"),
-            dcc.Graph(figure=fig2_1, id='graph2_1',
-                      config=dict(
-                          showTips=False,
-                          showAxisDragHandles=False,
-                          doubleClick=False,
-                          displayModeBar=False)),
-            html.H3("Étonnament, on remarque qu'il n'y a pas de lien évident entre les followers et le nombre de réaction, il est donc possible d'avoir un grand nombre de réaction même avec peu de followers !"),
-            html.Footer("")
-            ]),
-
-        html.Div(children=[
-            html.Header("Nombre de publications par semaine en 2020"),
-            dcc.Graph(figure=fig_hm_week, id='fig_hm_week',
-                      config=dict(
-                          showTips=False,
-                          showAxisDragHandles=False,
-                          doubleClick=False,
-                          displayModeBar=False)),
-            #html.Footer("First figure footer")
-            ]),
-
-            html.Div(children=[
-                html.Header("Nombre de publications selon le jour de la semaine en 2020"),
-                dcc.Graph(figure=fig_hm_weekday, id='fig_hm_weekday',
-                          config=dict(
-                              showTips=False,
-                              showAxisDragHandles=False,
-                              doubleClick=False,
-                              displayModeBar=False)),
-                #html.Footer("First figure footer")
-                ]),
         
-        html.Div([
+            html.Div([
 #             dcc.Dropdown(
 #                 id='fb-pages',
 #                 options=list_of_dicts,
@@ -163,7 +128,7 @@ app.layout = html.Div(
 #             ),
             html.Div(
                 children=[
-                    html.H2("Cette section présente des données plus en détail pour une seule page. Il sera possible de sélectionner la page dans un menu déroulant."),
+                    html.H3("Cette section présente des données plus en détail pour une seule page. Il sera possible de sélectionner la page dans un menu déroulant."),
                     html.Header("Nombre de followers moyen par mois"),
                     dcc.Graph(
                         id='line-chart-followers',
@@ -213,7 +178,43 @@ app.layout = html.Div(
                             displayModeBar=False)
                             )
                     ])
+                ]),
+
+        html.Div(children=[
+            html.H2("Comment maximiser les réactions sur ses posts Facebook ?"),
+            html.H3("Pour les gestionnaires de pages, le but est d'atteindre le plus grand nombre de personnes possible par publication. Quelles sont donc les conditions optimales pour atteindre cet objectif? Est-ce que le nombre de followers de la page impacte le niveau d'interaction?"),
+            dcc.Graph(figure=fig2_1, id='graph2_1',
+                      config=dict(
+                          showTips=False,
+                          showAxisDragHandles=False,
+                          doubleClick=False,
+                          displayModeBar=False)),
+            html.H3("Étonnament, on remarque qu'il n'y a pas de lien évident entre les followers et le nombre de réaction, il est donc possible d'avoir un grand nombre de réaction même avec peu de followers !"),
+            html.Footer("")
+            ]),
+
+        html.Div(children=[
+            html.Header("Nombre de publications par semaine en 2020"),
+            dcc.Graph(figure=fig_hm_week, id='fig_hm_week',
+                      config=dict(
+                          showTips=False,
+                          showAxisDragHandles=False,
+                          doubleClick=False,
+                          displayModeBar=False)),
+            #html.Footer("First figure footer")
+            ]),
+
+            html.Div(children=[
+                html.Header("Nombre de publications selon le jour de la semaine en 2020"),
+                dcc.Graph(figure=fig_hm_weekday, id='fig_hm_weekday',
+                          config=dict(
+                              showTips=False,
+                              showAxisDragHandles=False,
+                              doubleClick=False,
+                              displayModeBar=False)),
+                #html.Footer("First figure footer")
                 ])
+        
         ])
 
 # @app.callback(
