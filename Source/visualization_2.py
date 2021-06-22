@@ -13,7 +13,7 @@ def draw_line_chart_followers_months(df, fbid):
 
     temp_df = prepro.mean_followers_bymonth(df)
 
-    # fig = go.Figure()
+    fig = go.Figure()
     fig = fig.add_traces(
         go.Scatter(
             x=temp_df.keys(),
@@ -31,7 +31,7 @@ def draw_line_chart_publications_months(df, fbid):
 
     temp_df = prepro.count_post_bymonth(df)
 
-    # fig = go.Figure()
+    fig = go.Figure()
     fig = fig.add_traces(
         go.Scatter(
             x=temp_df.keys(),
