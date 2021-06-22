@@ -202,9 +202,9 @@ app.layout = html.Div(
     [dash.dependencies.Input('fb-pages', 'value')]
 )
 def update_output(value):
-    line_chart_followers = vizualisation_2.draw_line_chart_followers_months(df, value)
-    line_chart_posts = vizualisation_2.draw_line_chart_publications_months(df, value)
-    bar_chart_reactions = vizualisation_2.draw_stacked_bar_chart_reactions_months(df, value)
-    pie_chart_type = vizualisation_2.draw_piechart_type(df, value)
+    line_chart_followers = visualization_2.draw_line_chart_followers_months(df, value)
+    line_chart_posts = visualization_2.draw_line_chart_publications_months(df, value)
+    bar_chart_reactions = visualization_2.draw_stacked_bar_chart_reactions_months(df, value)
+    pie_chart_type = visualization_2.draw_piechart_type(df, value)
 
     return line_chart_followers, line_chart_posts, bar_chart_reactions, pie_chart_type
