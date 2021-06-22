@@ -2,6 +2,10 @@ import plotly.graph_objects as go
 import preprocess as prepro
 
 
+def empty_fig():
+    fig = go.Figure()
+    return fig
+
 def draw_line_chart_followers_months(df, fbid):
 
     df = prepro.filter_by_fbid(df, fbid)
@@ -9,7 +13,7 @@ def draw_line_chart_followers_months(df, fbid):
 
     temp_df = prepro.mean_followers_bymonth(df)
 
-    fig = go.Figure()
+    # fig = go.Figure()
     fig = fig.add_traces(
         go.Scatter(
             x=temp_df.keys(),
@@ -22,12 +26,12 @@ def draw_line_chart_followers_months(df, fbid):
 
 
 def draw_line_chart_publications_months(df, fbid):
-    temp_df = prepro.count_post_bymonth(df)
-
     df = prepro.filter_by_fbid(df, fbid)
     df = prepro.filter_by_month(df)
 
-    fig = go.Figure()
+    temp_df = prepro.count_post_bymonth(df)
+
+    # fig = go.Figure()
     fig = fig.add_traces(
         go.Scatter(
             x=temp_df.keys(),
@@ -40,12 +44,12 @@ def draw_line_chart_publications_months(df, fbid):
 
 
 def draw_stacked_bar_chart_reactions_months(df, fbid):
-    temp_df = prepro.sum_reactions_bymonth(df)
-
     df = prepro.filter_by_fbid(df, fbid)
     df = prepro.filter_by_month(df)
 
-    fig = go.Figure()
+    temp_df = prepro.sum_reactions_bymonth(df)
+
+    # fig = go.Figure()
     fig = go.Figure(data=[
         go.Bar(x=temp_df['month'], y=temp_df['likes'], name='likes'),
         go.Bar(x=temp_df['month'], y=temp_df['comments'], name='comments'),
@@ -64,12 +68,12 @@ def draw_stacked_bar_chart_reactions_months(df, fbid):
 
 
 def draw_piechart_type(df, fbid): # Or barchart TO CONFIRM
-    temp_df = prepro.count_post_type(df)
-
     df = prepro.filter_by_fbid(df, fbid)
     df = prepro.filter_by_month(df)
 
-    fig = go.Figure()
+    temp_df = prepro.count_post_type(df)
+
+    # fig = go.Figure()
     fig = go.Figure(data=[
         go.Pie(
             labels=temp_df['type'], 
