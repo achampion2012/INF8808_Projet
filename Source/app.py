@@ -56,14 +56,14 @@ fig_hm_weekday = heatmaps.get_heatmap_weekday(df_hm_weekday)
 
 
 #Creates dropdown options {pagename: fbid}
-# df_pagename_fbid = pd.read_csv('assets/data/pagename_fbid.csv')
-# list_of_dicts = []
-# for index, row in df_pagename_fbid.iterrows():
-#     temp = {
-#         'labels' : '{}'.format(row['page']), 
-#         'value' : '{}'.format(row['fbid'])
-#         }
-#     list_of_dicts.append(temp)
+df_pagename_fbid = pd.read_csv('assets/data/pagename_fbid.csv')
+list_of_dicts = []
+for index, row in df_pagename_fbid.iterrows():
+    temp = {
+        'labels' : '{}'.format(row['page']), 
+        'value' : '{}'.format(row['fbid'])
+        }
+    list_of_dicts.append(temp)
 
 
 app.layout = html.Div(
@@ -133,65 +133,65 @@ app.layout = html.Div(
                               doubleClick=False,
                               displayModeBar=False)),
                 #html.Footer("First figure footer")
-                ])
+                ]),
         
-#         html.Div([
-#             dcc.Dropdown(
-#                 id='fb-pages',
-#                 options=list_of_dicts,
-#                 placeholder="Select a page",
-#                 clearable=False
-#             ),
-#             html.Div(
-#                 children=[
-#                     dcc.Graph(
-#                         id='line-chart-followers',
-#                         className='graph',
-#                         figure=visualization_2.empty_fig(),
-#                         config=dict(
-#                             scrollZoom=False,
-#                             showTips=False,
-#                             showAxisDragHandles=False,
-#                             doubleClick=False,
-#                             displayModeBar=False)
-#                             ),
-#                     dcc.Graph(
-#                         id='line-chart-posts',
-#                         className='graph',
-#                         figure=visualization_2.empty_fig(),
-#                         config=dict(
-#                             scrollZoom=False,
-#                             showTips=False,
-#                             showAxisDragHandles=False,
-#                             doubleClick=False,
-#                             displayModeBar=False)
-#                             ),
+        html.Div([
+            dcc.Dropdown(
+                id='fb-pages',
+                options=list_of_dicts,
+                placeholder="Select a page",
+                clearable=False
+            ),
+            html.Div(
+                children=[
+                    dcc.Graph(
+                        id='line-chart-followers',
+                        className='graph',
+                        figure=visualization_2.empty_fig(),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False)
+                            ),
+                    dcc.Graph(
+                        id='line-chart-posts',
+                        className='graph',
+                        figure=visualization_2.empty_fig(),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False)
+                            ),
 
-#                     dcc.Graph(
-#                         id='bar-chart-reactions',
-#                         className='graph',
-#                         figure=visualization_2.empty_fig(),
-#                         config=dict(
-#                             scrollZoom=False,
-#                             showTips=False,
-#                             showAxisDragHandles=False,
-#                             doubleClick=False,
-#                             displayModeBar=False)
-#                             ),
+                    dcc.Graph(
+                        id='bar-chart-reactions',
+                        className='graph',
+                        figure=visualization_2.empty_fig(),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False)
+                            ),
 
-#                     dcc.Graph(
-#                         id='pie-chart-type',
-#                         className='graph',
-#                         figure=visualization_2.empty_fig(),
-#                         config=dict(
-#                             scrollZoom=False,
-#                             showTips=False,
-#                             showAxisDragHandles=False,
-#                             doubleClick=False,
-#                             displayModeBar=False)
-#                             )
-#                     ]
-#                 ])
+                    dcc.Graph(
+                        id='pie-chart-type',
+                        className='graph',
+                        figure=visualization_2.empty_fig(),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False)
+                            )
+                    ]
+                ])
         ])
 
 # @app.callback(
