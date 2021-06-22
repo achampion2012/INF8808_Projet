@@ -73,7 +73,7 @@ app.layout = html.Div(
     className='content',
     children=[
         html.Header(children=[
-            html.H1('Les pages Facebook Canadiennes en 2020'),
+            html.H1('Les pages Facebook canadiennes en 2020'),
             html.H3('Que s’est-il passé sur Facebook en 2020 ? Quelles sont les pages canadiennes qui se sont démarquées et quelles sont les caractéristiques de ces pages ? L’article suivant vous propose de plonger dans les données de 3,6 millions de publications, c’est-à-dire les 300,000 ayant reçues le plus de likes à chaque mois durant l’année 2020. ')
         ]),
 
@@ -102,28 +102,17 @@ app.layout = html.Div(
             html.Footer("")
             ]),
         
-                #second figure
-        html.Div(children=[
-            html.H3("Comme on pouvait s’y attendre, les pages canadiennes publient principalement en anglais. Cependant, des publications ont été faites dans plus de 89 langues !"),
-            dcc.Graph(figure=fig01, id='graph1',
-                      config=dict(
-                          showTips=False,
-                          showAxisDragHandles=False,
-                          doubleClick=False,
-                          displayModeBar=False)),
-            html.Footer("")
-            ]),
 
         html.Div(children=[
-            html.H2("Comment maximiser les reactions sur ses posts Facebook ?"),
-            html.H3("Est-ce que le nombre de followers de la page est impactant ?"),
+            html.H2("Comment maximiser les réactions sur ses posts Facebook ?"),
+            html.H3("Pour les gestionnaires de pages, le but est d'atteindre le plus grand nombre de personnes possible par publication. Quelles sont donc les conditions optimales pour atteindre cet objectif? Est-ce que le nombre de followers de la page impacte le niveau d'interaction?"),
             dcc.Graph(figure=fig2_1, id='graph2_1',
                       config=dict(
                           showTips=False,
                           showAxisDragHandles=False,
                           doubleClick=False,
                           displayModeBar=False)),
-            html.H3("On remarque qu'il n'y a pas de lien évident entre les followers et le nombre de réaction, il est donc possible d'avoir un grand nombre de réaction même avec peu de followers !"),
+            html.H3("Étonnament, on remarque qu'il n'y a pas de lien évident entre les followers et le nombre de réaction, il est donc possible d'avoir un grand nombre de réaction même avec peu de followers !"),
             html.Footer("")
             ]),
 
