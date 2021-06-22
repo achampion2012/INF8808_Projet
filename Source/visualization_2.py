@@ -21,7 +21,11 @@ def draw_line_chart_followers_months(df, fbid):
             mode='lines+markers'
             )
         )
-
+    
+    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    title_x=0.5,
+    font_color='rgb(59,89,152)'))
     return fig
 
 
@@ -39,7 +43,10 @@ def draw_line_chart_publications_months(df, fbid):
             mode='lines+markers'
             )
         )
-
+    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    title_x=0.5,
+    font_color='rgb(59,89,152)'))
     return fig
 
 
@@ -62,7 +69,10 @@ def draw_stacked_bar_chart_reactions_months(df, fbid):
         go.Bar(x=temp_df['month'], y=temp_df['care'], name='care')
     ])
 
-    fig.update_layout(barmode='stack')
+    fig.update_layout(barmode='stack', paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    title_x=0.5,
+    font_color='rgb(59,89,152)'))
 
     return fig
 
@@ -80,5 +90,9 @@ def draw_piechart_type(df, fbid): # Or barchart TO CONFIRM
             values=temp_df['fbid']
             )
     ])
+    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    title_x=0.5,
+    font_color='rgb(59,89,152)'))
 
     return fig
