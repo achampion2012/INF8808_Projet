@@ -18,6 +18,10 @@ def draw_average_lang():
     title='Répartition des publications selon la langue en 2020',  
     labels={'x':'Langue de publication', 'y': 'Nombre de publications'} )
     fig.update_traces(marker_color='rgb(59,89,152)')
+    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    title_x=0.5,
+    font_color='rgb(59,89,152)')
 
     return fig
     
@@ -32,6 +36,10 @@ def draw_average_type():
     title='Répartition des publications selon le type en 2020',  
     labels={'x':'Type de publication', 'y': 'Nombre de publications'} )
     fig.update_traces(marker_color='rgb(59,89,152)')
+    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    title_x=0.5,
+    font_color='rgb(59,89,152)')
 
     return fig
     
