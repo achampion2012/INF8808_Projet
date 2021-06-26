@@ -57,17 +57,6 @@ def CreateSubPlot(data):
     
 
     return fig
-def CreateSubPlot(data):
-    NumSubPlot = len(data.columns) - 1
-    ColumnWidths = [WidthsTablePlot , WidthsArrowPlot]* int(NumSubPlot//2) + [WidthsTablePlot]
-
-    fig = make_subplots(column_widths=ColumnWidths,
-    rows=1,cols=NumSubPlot,
-    horizontal_spacing=0.0,
-    specs=[[{"type": "table"},{"type": "scatter"}]*int(NumSubPlot//2) +[{"type": "table"}]])
-    
-
-    return fig
 def Visual_1(data,col):
     data = preproc.SelectDataVisual1(data,col)
     fig = CreateSubPlot(data)

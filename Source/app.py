@@ -37,7 +37,8 @@ df = pd.read_csv('assets/data/reduced_db.zip')
 fig00 = draw_average_type()
 fig01 = draw_average_lang()
 
-
+ClickButtonStyle = {"background-color": "#3b5998","color":"white"}
+NoClickButtonStyle = {"background-color": "white","color":"black"}
 # Heatmaps
 #   df = pd.read_csv('../src/assets/data/facebookCanada2020.csv', index_col=0)
 #   df = preproc.FilterData(df)
@@ -108,15 +109,14 @@ app.layout = html.Div(
             html.H3("Absolute number of reactions: On regarde les pages qui ont généré le total de réactions le plus grand en 2020."),
             html.H3("Reactions per post: On divise le nombre de réactions par le nombre de post d’une page pour avoir le nombre de réactions moyen par publication."),
             html.H3("Total followers: On classe les pages en fonction du nombre de followers moyen qu’ils ont eu dans l’année."),
-            dcc.Graph(figure=Visual_1([],1), id='graph02_1',
-                      config=dict(
-                          showTips=False,
-                          showAxisDragHandles=False,
-                          doubleClick=False,
-                          displayModeBar=False)),
+            dcc.Graph(id='Tableau',className='graph', figure=Visual_1([],1),config=dict(showTips=False,showAxisDragHandles=False,displayModeBar=False,doubleClick=True,),),
+
+            html.Button('nombrePage', id='nombrePage', n_clicks=0),
+            html.Button('nombreReaction', id='nombreReaction', n_clicks=0),
+            html.Button('interaction', id='interaction', n_clicks=0),
+            html.Button('followers', id='followers', n_clicks=0),
             html.Footer("")
             ]),
-        
             html.Div([
 #             dcc.Dropdown(
 #                 id='fb-pages',
@@ -126,7 +126,7 @@ app.layout = html.Div(
 #                 style={'color':'black'},
 #                 value=273000682715952
 #             ),
-            html.Div(
+        html.Div(
                 children=[
                     html.H3("Cette section présente des données plus en détail pour une seule page. Il sera possible de sélectionner la page dans un menu déroulant."),
                     html.Header("Nombre de followers moyen par mois"),
@@ -231,3 +231,38 @@ app.layout = html.Div(
 #     pie_chart_type = visualization_2.draw_piechart_type(df, value)
 
 #     return line_chart_followers, line_chart_posts, bar_chart_reactions, pie_chart_type
+
+
+@app.callback(
+    [
+    Output('Tableau', 'figure'),
+    Output('nombrePage', 'style'),
+    Output('nombreReaction', 'style'),
+    Output('interaction', 'style'),
+    Output('followers', 'style'),],
+    [Input('nombrePage', 'n_clicks'),
+    Input('nombreReaction', 'n_clicks'),
+    Input('interaction', 'n_clicks'),
+    Input('followers', 'n_clicks'),
+    ]
+)
+def Tableau_clicked(btn1,btn2,btn3,btn4):
+    changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
+    styleOutput = [NoClickButtonStyle]*4
+    if "nombrePage" in changed_id:
+        styleOutput[0] = ClickButtonStyle
+        fig =  Visual_1([],1)
+    elif "nombreReaction" in changed_id:
+        styleOutput[1] = ClickButtonStyle
+        fig =  Visual_1([],2)
+    elif "interaction" in changed_id:
+        styleOutput[2] = ClickButtonStyle
+        fig =  Visual_1([],3)
+    elif "followers" in changed_id:
+        styleOutput[3] = ClickButtonStyle
+        fig =  Visual_1([],4)
+    else:
+        styleOutput[0] = ClickButtonStyle
+        fig =  Visual_1([],1)
+    print(styleOutput)
+    return fig,styleOutput[0],styleOutput[1],styleOutput[2],styleOutput[3]
