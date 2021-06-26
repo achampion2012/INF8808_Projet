@@ -4,8 +4,8 @@
 import pandas as pd
 
 Top = 10
-colors = ['#1f77b4','#aec78e','#ff7f0e','#ffbb78','#2ca02c',
-        '#98df8a','#d62728','#ff9896','#9467bd','#c5b0d5',
+colors = ['#92bff6','#70acf4','#4f99f1','#2e86ef','#1173e8',
+          '#0f62c6','#0c52a5','#0a4184','#073163','#052042',
         '#8c564b','#c49c94','#e377c2','#f7b6d2','#7f7f7f',
         '#c7c7c7','#bcbd22','#dbdb8d','#17becf','#9edae5']
 def FilterData(df):

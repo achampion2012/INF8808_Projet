@@ -1,11 +1,11 @@
 ,nombrePage,nombrePageColor,nombreReaction,nombreReactionColor,interaction,interactionColor,followers,followersColor
-0,CTV News,#1f77b4,theScore (6),#ffbb78,Screen Rant (1294),#c5b0d5,theScore (208),#ffbb78
-1,La Parole Vivante,#aec78e,La Parole Vivante (10),#aec78e,theScore (1424),#ffbb78,The Vintage News (274),#98df8a
-2,War History Online,#ff7f0e,Screen Rant (11),#c5b0d5,TVA Nouvelles (1791),#9467bd,CBC News (307),#d62728
-3,theScore,#ffbb78,TVA Nouvelles (18),#9467bd,La Parole Vivante (2210),#aec78e,Global News (349),#2ca02c
-4,Global News,#2ca02c,CTV News (28),#1f77b4,CBC News (2468),#d62728,War History Online (390),#ff7f0e
-5,The Vintage News,#98df8a,CBC News (29),#d62728,Global News (3443),#2ca02c,Screen Rant (429),#c5b0d5
-6,CBC News,#d62728,Global News (38),#2ca02c,CTV News (3582),#1f77b4,La Parole Vivante (464),#aec78e
-7,Le Journal de Montréal,#ff9896,War History Online (82),#ff7f0e,Le Journal de Montréal (4659),#ff9896,TVA Nouvelles (606),#9467bd
-8,TVA Nouvelles,#9467bd,Le Journal de Montréal (83),#ff9896,War History Online (6087),#ff7f0e,CTV News (719),#1f77b4
-9,Screen Rant,#c5b0d5,The Vintage News (105),#98df8a,The Vintage News (6806),#98df8a,Le Journal de Montréal (963),#ff9896
+0,CTV News,#92bff6,theScore (6),#2e86ef,Screen Rant (1294),#052042,theScore (208),#2e86ef
+1,La Parole Vivante,#70acf4,La Parole Vivante (10),#70acf4,theScore (1424),#2e86ef,The Vintage News (274),#0f62c6
+2,War History Online,#4f99f1,Screen Rant (11),#052042,TVA Nouvelles (1791),#073163,CBC News (307),#0c52a5
+3,theScore,#2e86ef,TVA Nouvelles (18),#073163,La Parole Vivante (2210),#70acf4,Global News (349),#1173e8
+4,Global News,#1173e8,CTV News (28),#92bff6,CBC News (2468),#0c52a5,War History Online (390),#4f99f1
+5,The Vintage News,#0f62c6,CBC News (29),#0c52a5,Global News (3443),#1173e8,Screen Rant (429),#052042
+6,CBC News,#0c52a5,Global News (38),#1173e8,CTV News (3582),#92bff6,La Parole Vivante (464),#70acf4
+7,Le Journal de Montréal,#0a4184,War History Online (82),#4f99f1,Le Journal de Montréal (4659),#0a4184,TVA Nouvelles (606),#073163
+8,TVA Nouvelles,#073163,Le Journal de Montréal (83),#0a4184,War History Online (6087),#4f99f1,CTV News (719),#92bff6
+9,Screen Rant,#052042,The Vintage News (105),#0f62c6,The Vintage News (6806),#0f62c6,Le Journal de Montréal (963),#0a4184
