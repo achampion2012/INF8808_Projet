@@ -36,7 +36,7 @@ df = pd.read_csv('assets/data/reduced_db.zip')
 
 fig00 = draw_average_type()
 fig01 = draw_average_lang()
-fig02 = Visual_1([])
+
 
 # Heatmaps
 #   df = pd.read_csv('../src/assets/data/facebookCanada2020.csv', index_col=0)
@@ -108,7 +108,7 @@ app.layout = html.Div(
             html.H3("Absolute number of reactions: On regarde les pages qui ont généré le total de réactions le plus grand en 2020."),
             html.H3("Reactions per post: On divise le nombre de réactions par le nombre de post d’une page pour avoir le nombre de réactions moyen par publication."),
             html.H3("Total followers: On classe les pages en fonction du nombre de followers moyen qu’ils ont eu dans l’année."),
-            dcc.Graph(figure=fig02, id='graph02_1',
+            dcc.Graph(figure=Visual_1([],1), id='graph02_1',
                       config=dict(
                           showTips=False,
                           showAxisDragHandles=False,

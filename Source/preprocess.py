@@ -23,12 +23,12 @@ def FilterData(df):
     dataReactionPost.columns = ['page','interaction']
 
     result = pd.merge(dataPage, dataReaction, on='page', how='inner')
-    result = pd.merge(result, dataFollowers, on='page', how='inner')
     result = pd.merge(result, dataReactionPost, on='page', how='inner')
+    result = pd.merge(result, dataFollowers, on='page', how='inner')
     return result
 
 
-def SelectColor(data,col=1):
+def SelectColor(data,col):
     maxTableCol = len(data.columns) - 1
 
 
@@ -50,10 +50,11 @@ def SelectColor(data,col=1):
             table[data.columns[i]+"Color"] = tempColor
     return table
 
-def SelectDataVisual1(data):
+def SelectDataVisual1(data,col=1):
     #data = FilterData(data)
-    #data = SelectColor(data)
-    data = pd.read_csv('assets/data/temporaryDataVisual1.csv').drop(['Unnamed: 0'], axis=1)
+    #data = SelectColor(data,col)
+    filename = 'assets/data/temporaryDataVisual1_Col'+str(col)+'.csv'
+    data = pd.read_csv(filename).drop(['Unnamed: 0'], axis=1)
     return data
 
 def datecreated_to_datetime(df):
