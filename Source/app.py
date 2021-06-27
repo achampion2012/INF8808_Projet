@@ -117,68 +117,64 @@ app.layout = html.Div(
             html.Button('followers', id='followers', n_clicks=0),
             html.Footer("")
             ]),
+            
+        html.Div([
+            dcc.Dropdown(
+                id='fb-pages',
+                options=list_of_dicts,
+                placeholder="Select or type a page name",
+                clearable=False,
+                style={'color':'black'},
+                value=100044362032719
+            ),
+            html.H3("Cette section présente des données plus en détail pour une seule page. Il sera possible de sélectionner la page dans un menu déroulant."),
             html.Div([
-#             dcc.Dropdown(
-#                 id='fb-pages',
-#                 options=list_of_dicts,
-#                 placeholder="Select a page",
-#                 clearable=False,
-#                 style={'color':'black'},
-#                 value=273000682715952
-#             ),
-        html.Div(
-                children=[
-                    html.H3("Cette section présente des données plus en détail pour une seule page. Il sera possible de sélectionner la page dans un menu déroulant."),
-                    html.Header("Nombre de followers moyen par mois"),
-                    dcc.Graph(
-                        id='line-chart-followers',
-                        className='graph',
-                        figure=visualization_2.draw_line_chart_followers_months(df, 100044362032719),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False)
+                    html.Div(
+                        dcc.Graph(
+                            id='line-chart-followers',
+                            className='graph'
                             ),
-                    html.Header("Nombre de publications par mois"),
-                    dcc.Graph(
-                        id='line-chart-posts',
-                        className='graph',
-                        figure=visualization_2.draw_line_chart_publications_months(df, 100044362032719),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False)
+                        style={
+                            'width':'50%',
+                            'display':'inline-block'
+                            }
+                    ),
+                    html.Div(
+                        dcc.Graph(
+                            id='line-chart-posts',
+                            className='graph'
                             ),
-                    html.Header("Nombre total de reactions par mois"),
-                    dcc.Graph(
-                        id='bar-chart-reactions',
-                        className='graph',
-                        figure=visualization_2.draw_stacked_bar_chart_reactions_months(df, 100044362032719),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False)
+                        style={
+                            'width':'50%',
+                            'display':'inline-block'
+                            }
+
+                    )]),
+            html.Div([    
+                    html.Div(
+                        dcc.Graph(
+                            id='bar-chart-reactions',
+                            className='graph'
                             ),
-                    html.Header("Type de publication"),
-                    dcc.Graph(
-                        id='pie-chart-type',
-                        className='graph',
-                        figure=visualization_2.draw_piechart_type(df, 100044362032719),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False)
-                            )
-                    ])
-                ]),
+                        style={
+                            'width':'50%',
+                            'display':'inline-block'
+                            }
+                    ),
+                    html.Div(
+                        dcc.Graph(
+                            id='pie-chart-type',
+                            className='graph'
+                            ),
+                        style={
+                            'width':'50%',
+                            'display':'inline-block'
+                            }
+                    )
+                ]
+            )
+        ]
+    ),
 
         html.Div(children=[
             html.H2("Comment maximiser les réactions sur ses posts Facebook ?"),
@@ -217,20 +213,20 @@ app.layout = html.Div(
         
         ])
 
-# @app.callback(
-#     [Output('line-chart-followers', 'figure'), 
-#     Output('line-chart-posts', 'figure'),
-#     Output('bar-chart-reactions', 'figure'),
-#     Output('pie-chart-type', 'figure')],
-#     [Input('fb-pages', 'value')]
-# )
-# def update_output(value):
-#     line_chart_followers = visualization_2.draw_line_chart_followers_months(df, value)
-#     line_chart_posts = visualization_2.draw_line_chart_publications_months(df, value)
-#     bar_chart_reactions = visualization_2.draw_stacked_bar_chart_reactions_months(df, value)
-#     pie_chart_type = visualization_2.draw_piechart_type(df, value)
+@app.callback(
+    [Output('line-chart-followers', 'figure'), 
+    Output('line-chart-posts', 'figure'),
+    Output('bar-chart-reactions', 'figure'),
+    Output('pie-chart-type', 'figure')],
+    [Input('fb-pages', 'value')]
+)
+def update_output(value):
+    line_chart_followers = visualization_2.draw_line_chart_followers_months(df, value)
+    line_chart_posts = visualization_2.draw_line_chart_publications_months(df, value)
+    bar_chart_reactions = visualization_2.draw_stacked_bar_chart_reactions_months(df, value)
+    pie_chart_type = visualization_2.draw_piechart_type(df, value)
 
-#     return line_chart_followers, line_chart_posts, bar_chart_reactions, pie_chart_type
+    return line_chart_followers, line_chart_posts, bar_chart_reactions, pie_chart_type
 
 
 @app.callback(
