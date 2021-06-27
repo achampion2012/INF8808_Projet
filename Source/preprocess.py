@@ -80,7 +80,7 @@ def weekday_hour_publication(df):
     return df
 
 def filter_by_fbid(dataframe, fbid):
-    return dataframe.loc[dataframe['fbid'] == fbid].copy()
+    return dataframe.loc[dataframe['fbid'] == int(fbid)].copy()
 
 
 
