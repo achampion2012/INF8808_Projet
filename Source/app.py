@@ -27,6 +27,7 @@ from visualisation0 import draw_average_type
 from visualisation0 import draw_average_lang
 import visualization_2
 from visualisation2_1 import draw_scatter_followers
+from visualisation2_1 import draw_barchart_type
 
 app = dash.Dash(__name__)
 app.title = 'Project | INF8808'
@@ -54,7 +55,9 @@ fig_hm_week = heatmaps.get_heatmap_week(df_hm_week)
 fig_hm_weekday = heatmaps.get_heatmap_weekday(df_hm_weekday)
 
 df_scatter = pd.read_csv('assets/data/scatter.csv', index_col=0)
+df_barchart = pd.read_csv('assets/data/barchart.csv', index_col=0)
 fig2_1 = draw_scatter_followers(df_scatter)
+fig2_2 = draw_barchart_type(df_barchart)
 
 # Creates dropdown options {pagename: fbid}
 df_pagename_fbid = pd.read_csv('assets/data/pagename_fbid_reduced.csv')
@@ -216,6 +219,22 @@ app.layout = html.Div(
             html.H3(
                 "Étonnament, on remarque qu'il n'y a pas de lien évident entre les followers et le nombre de "
                 "réaction, il est donc possible d'avoir un grand nombre de réaction même avec peu de followers !"),
+            html.Footer("")
+        ]),
+        
+        html.Div(children=[
+            html.H3(
+                "Quel type de contenu génère le plus de réactions sur Facebook ?"
+                "Regardons le nombre de réactions médian selon le contenu publié :"),
+            dcc.Graph(figure=fig2_2, id='graph2_2',
+                      config=dict(
+                          showTips=False,
+                          showAxisDragHandles=False,
+                          doubleClick=False,
+                          displayModeBar=False)),
+            html.H3(
+                "Le contenu générant le plus de réactions est donc le live video !"
+                "Au contraire, une publication avec un lien semble généré moins de réactions"),
             html.Footer("")
         ]),
 
