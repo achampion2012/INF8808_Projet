@@ -224,7 +224,7 @@ app.layout = html.Div(
         
         html.Div(children=[
             html.H3(
-                "Quel type de contenu génère le plus de réactions sur Facebook ?"
+                "Quel type de contenu génère le plus de réactions sur Facebook ? "
                 "Regardons le nombre de réactions médian selon le contenu publié :"),
             dcc.Graph(figure=fig2_2, id='graph2_2',
                       config=dict(
@@ -233,7 +233,7 @@ app.layout = html.Div(
                           doubleClick=False,
                           displayModeBar=False)),
             html.H3(
-                "Le contenu générant le plus de réactions est donc le live video !"
+                "Le contenu générant le plus de réactions est donc le live video ! "
                 "Au contraire, une publication avec un lien semble généré moins de réactions"),
             html.Footer("")
         ]),
