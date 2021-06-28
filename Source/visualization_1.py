@@ -15,7 +15,8 @@ def CreateTable(data,fig):
     subplot = 1
     Top = len(data.index)
     for strHeader in HeaderTemplate:
-        fig.add_trace(go.Table(header=dict(font_size=FontSize,values=["<b> {} </b>".format(strHeader)],
+        fig.add_trace(go.Table(header=dict(font_color="white",font_size=11.5,values=["<b> {} </b>".format(strHeader)],
+        fill_color='rgb(59, 89, 152)',line_color='rgb(59, 89, 152)',
         height=HeightHeader, align='center'), 
         
         cells=dict(font=dict(color='white', size=FontSize),
