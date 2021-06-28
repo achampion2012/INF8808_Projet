@@ -36,8 +36,8 @@ df = pd.read_csv('assets/data/reduced_db.zip')
 fig00 = draw_average_type()
 fig01 = draw_average_lang()
 
-ClickButtonStyle = {"background-color": "#3b5998", "color": "white"}
-NoClickButtonStyle = {"background-color": "white", "color": "black"}
+ClickButtonStyle = {"background-color": "#3b5998", "color": "white",}
+NoClickButtonStyle = {"background-color": "white", "color": "black",}
 # Heatmaps
 #   df = pd.read_csv('../src/assets/data/facebookCanada2020.csv', index_col=0)
 #   df = preproc.FilterData(df)
@@ -125,15 +125,19 @@ app.layout = html.Div(
                 "nombre de réactions moyen par publication."),
             html.H3(
                 "Total followers: On classe les pages en fonction du nombre de followers moyen qu’ils ont eu dans "
-                "l’année."),
-            dcc.Graph(id='Tableau', className='graph', figure=Visual_1([], 1),
-                      config=dict(showTips=False, showAxisDragHandles=False, displayModeBar=False,
-                                  doubleClick=True, ), ),
+                "l’année."),]),
 
+        html.Div(className='ButtonVisaul',children=[
             html.Button('nombrePage', id='nombrePage', n_clicks=0),
             html.Button('nombreReaction', id='nombreReaction', n_clicks=0),
             html.Button('interaction', id='interaction', n_clicks=0),
             html.Button('followers', id='followers', n_clicks=0),
+        ]),
+
+        html.Div(children=[
+            dcc.Graph(id='Tableau', className='graph', figure=Visual_1([], 1),
+                    config=dict(showTips=False, showAxisDragHandles=False, displayModeBar=False,
+                                doubleClick=True, ), ),
             html.Footer("")
         ]),
 
@@ -143,7 +147,7 @@ app.layout = html.Div(
                 options=list_of_dicts,
                 placeholder="Select or type a page name",
                 clearable=False,
-                style={'color': 'black'},
+                style={'color': 'black','margin-top': '25px'},
                 value=100044362032719
             ),
             html.H3(
@@ -287,5 +291,4 @@ def Tableau_clicked(btn1, btn2, btn3, btn4):
     else:
         styleOutput[0] = ClickButtonStyle
         fig = Visual_1([], 1)
-    print(styleOutput)
     return fig, styleOutput[0], styleOutput[1], styleOutput[2], styleOutput[3]
