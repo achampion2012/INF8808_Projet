@@ -215,15 +215,19 @@ app.layout = html.Div(
             html.Footer("")
         ]),
 
+
+
         html.Div(children=[
-            html.H3(""),
+            html.H3("Le nombre de publications des pages étudiées diffère beaucoup selon l’heure de la journée. On remarque très peu d'activités entre 00h00 et 06h00. C’est clairement dû au faible nombre d’utilisateurs connectées la nuit, le contenu publié à ces heures-là n'atteindrait que peu de personnes. La période la plus active est celle entre 09h00 et 17h00, elle correspond aux heures de travail standard. L’heure la plus active est celle entre 12h00 et 13h00, elle correspond à la pause déjeuner."),
             dcc.Graph(figure=fig_hm_week, id='fig_hm_week',
                       config=dict(
                           showTips=False,
                           showAxisDragHandles=False,
                           doubleClick=False,
                           displayModeBar=False)),
-            # html.Footer("First figure footer")
+            html.H3(
+                "En étudiant le nombre de publications sur toute les semaines de l’année 2020, on remarque tout d’abord un faible nombre de publications les semaine 1 et 53. C’est dû au fait que ce ne sont pas des semaines complètes. Ensuite, les semaine 10 et 11 ont aussi connu un faible nombre de publications. Ces semaines correspondent à la période du 2 au 15 mars, la période où la pandémie de la COVID-19 s’est propagée et où les restrictions ont commencé. La semaine 52 est aussi relativement faible en activité, ce qui peut être expliqué par les fêtes de fin d’années qui occupent les gens."),
+            html.Footer("")
         ]),
 
         html.Div(children=[
@@ -234,7 +238,9 @@ app.layout = html.Div(
                           showAxisDragHandles=False,
                           doubleClick=False,
                           displayModeBar=False)),
-            # html.Footer("First figure footer")
+            html.H3(
+                "En regardant la répartition des publications sur les jours de la semaine, on remarque clairement un faible nombre de publications le week-end. Pendant les jours de semaine, c’est surtout en milieu de semaine qu’on remarque la plus grande activité. Les heures d’activité sont relativement semblables."),
+            html.Footer("")
         ])
 
     ])
