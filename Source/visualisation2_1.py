@@ -12,7 +12,7 @@ def draw_scatter_followers(data):
     return fig
 
 def draw_barchart_type(data):
-    fig = px.bar(cdf.groupby(["type"]).median(), y="reaction")
+    fig = px.bar(data.groupby(["type"]).median(), y="reaction")
     fig.update_layout(
         yaxis={"title":"Nombre de réactions médian"}, 
         xaxis={'categoryorder':'array', 'categoryarray':["Live Video", "Photo", "Video", "Status", "Album", "Link"], "title":"Type de publication"},
