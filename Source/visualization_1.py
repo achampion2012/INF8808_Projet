@@ -29,7 +29,7 @@ def CreateTable(data,fig):
     return fig
     
 def CreateArrow(data,fig):
-    fig.update_layout(plot_bgcolor="white")
+
     Top = len(data.index)
     HeadTable = [StrHead+"Color"  for StrHead in HeaderTemplate]
     for col in range(len(HeadTable)-1):
@@ -54,7 +54,7 @@ def CreateSubPlot(data):
     rows=1,cols=NumSubPlot,
     horizontal_spacing=0.0,
     specs=[[{"type": "table"},{"type": "scatter"}]*int(NumSubPlot//2) +[{"type": "table"}]])
-    
+    fig.update_layout(plot_bgcolor="#dfe3ee",paper_bgcolor='#dfe3ee')
 
     return fig
 def Visual_1(data,col):
