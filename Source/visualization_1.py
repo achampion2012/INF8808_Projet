@@ -54,7 +54,7 @@ def CreateSubPlot(data):
     rows=1,cols=NumSubPlot,
     horizontal_spacing=0.0,
     specs=[[{"type": "table"},{"type": "scatter"}]*int(NumSubPlot//2) +[{"type": "table"}]])
-    fig.update_layout(plot_bgcolor="#dfe3ee",paper_bgcolor='red',
+    fig.update_layout(plot_bgcolor="#dfe3ee",
                         margin=dict(l=0,r=0,t=0,b=0))
     return fig
 def Visual_1(data,col):
