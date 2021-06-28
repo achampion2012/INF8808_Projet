@@ -113,25 +113,25 @@ app.layout = html.Div(
                 "Un ranking chart présente d’abord les pages s’étant démarquées selon différentes catégories. Il est "
                 "ensuite possible de sélectionner une seule page et d’aller voir en détail pourquoi elle s’est "
                 "démarquée. Cela permet aussi de voir son ranking pour toutes les catégories, même si elle n’était "
-                "pas dans le top 20"),
+                "pas dans le top 10"),
             html.H3(
-                "Absolute number of posts: Ici, on regarde les pages qui ont le plus posté en 2020. Ce sont "
+                "Nombre de page: Ici, on regarde les pages qui ont le plus posté en 2020. Ce sont "
                 "principalement des pages de nouvelles."),
             html.H3(
-                "Absolute number of reactions: On regarde les pages qui ont généré le total de réactions le plus "
+                "Nombre de réaction: On regarde les pages qui ont généré le total de réactions le plus "
                 "grand en 2020."),
             html.H3(
-                "Reactions per post: On divise le nombre de réactions par le nombre de post d’une page pour avoir le "
+                "Réaction par post: On divise le nombre de réactions par le nombre de post d’une page pour avoir le "
                 "nombre de réactions moyen par publication."),
             html.H3(
-                "Total followers: On classe les pages en fonction du nombre de followers moyen qu’ils ont eu dans "
+                "Followers: On classe les pages en fonction du nombre de followers moyen qu’ils ont eu dans "
                 "l’année."),]),
 
         html.Div(className='ButtonVisaul',children=[
-            html.Button('nombrePage', id='nombrePage', n_clicks=0),
-            html.Button('nombreReaction', id='nombreReaction', n_clicks=0),
-            html.Button('interaction', id='interaction', n_clicks=0),
-            html.Button('followers', id='followers', n_clicks=0),
+            html.Button('Nombre Page', id='nombrePage', n_clicks=0),
+            html.Button('Nombre de réaction', id='nombreReaction', n_clicks=0),
+            html.Button('Réaction par post', id='interaction', n_clicks=0),
+            html.Button('Followers', id='followers', n_clicks=0),
         ]),
 
         html.Div(children=[
