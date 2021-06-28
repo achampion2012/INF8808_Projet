@@ -39,6 +39,16 @@ def draw_line_chart_followers_months(df, fbid):
         yaxis_title="Followers",
         xaxis_title="Months"
         )
+    
+    hover_template = (
+        "<b>Month :</b> %{x}<br>" +
+        "<b>Followers :</b> %{y}<br>" + 
+        "<extra></extra>"
+    )
+
+    fig.update_traces(
+        hovertemplate=hover_template
+    )
 
     return fig
 
@@ -59,10 +69,6 @@ def draw_line_chart_publications_months(df, fbid):
             )
         )
 
-    # fig.update_yaxes(
-    #     tickformat=',d'
-    # )
-
     fig.update_layout(
         title="Le nombre de publication(s) par mois",
         font=dict(
@@ -75,6 +81,17 @@ def draw_line_chart_publications_months(df, fbid):
         yaxis_title="Number of posts",
         xaxis_title="Months"
         )
+    
+    hover_template = (
+        "<b>Month :</b> %{x}<br>" +
+        "<b>Nb of posts :</b> %{y}<br>" + 
+        "<extra></extra>"
+    )
+
+    fig.update_traces(
+        hovertemplate=hover_template
+    )
+    
     return fig
 
 
@@ -111,6 +128,15 @@ def draw_stacked_bar_chart_reactions_months(df, fbid):
         yaxis_title="Number of interactions",
         xaxis_title="Months"
         )
+    
+    hover_template = (
+        "<b>Month :</b> %{x}<br>" +
+        "<b>Nb of reactions :</b> %{y}<br>"
+    )
+
+    fig.update_traces(
+        hovertemplate=hover_template
+    )
 
     return fig
 
