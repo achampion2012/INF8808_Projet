@@ -10,12 +10,12 @@ WidthsTablePlot = 0.2
 WidthsArrowPlot = WidthsTablePlot/2
 
 HeaderTemplate = ['nombrePage','nombreReaction','interaction','followers']
-
+HeaderTemplateCorrect = ["Nombre Page","Nombre de réaction","Réaction par post","Followers"]
 def CreateTable(data,fig):
     subplot = 1
     Top = len(data.index)
-    for strHeader in HeaderTemplate:
-        fig.add_trace(go.Table(header=dict(font_color="white",font_size=11.5,values=["<b> {} </b>".format(strHeader)],
+    for idx,strHeader in enumerate(HeaderTemplate):
+        fig.add_trace(go.Table(header=dict(font_color="white",font_size=11.5,values=["<b> {} </b>".format(HeaderTemplateCorrect[idx])],
         fill_color='rgb(59, 89, 152)',line_color='rgb(59, 89, 152)',
         height=HeightHeader, align='center'), 
         
