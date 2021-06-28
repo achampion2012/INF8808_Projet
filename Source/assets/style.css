@@ -1,9 +1,9 @@
 body {
     background-color: #dfe3ee;
-    margin: 0;
-    padding-right: 250px;
-    padding-left:250px;
-    display: flex;
+    margin: 3%;
+    padding-right: 25px;
+    padding-left:25px;
+    display: block;
     align-items: center;
 }
 

@@ -5,7 +5,8 @@ def get_heatmap_week(df):
     fig.update_layout(xaxis_title="Semaine", yaxis_title="Heure", paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',
     title_x=0.5,
-    font_color='rgb(59,89,152)')
+    font_color='rgb(59,89,152)',
+    title="Nombre de publications par semaine en 2020")
     fig.update_traces(hovertemplate="<br>".join([
             "<b> Semaine: </b> %{x}",
             "<b> Heure: </b> %{y}h00 - %{y}h59",
@@ -17,7 +18,8 @@ def get_heatmap_weekday(df):
     fig.update_layout(xaxis_title="Jour", yaxis_title="Heure", paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',
     title_x=0.5,
-    font_color='rgb(59,89,152)')
+    font_color='rgb(59,89,152)',
+    title="Nombre de publications selon le jour de la semaine en 2020")
     fig.update_traces(hovertemplate="<br>".join([
             "<b> Jour: </b> %{x}",
             "<b> Heure: </b> %{y}h00 - %{y}h59",
