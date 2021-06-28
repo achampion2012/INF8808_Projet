@@ -26,11 +26,10 @@ def CreateTable(data,fig):
         row=1,col=subplot
         )
         subplot = subplot + 2
-    fig.update_layout(dragmode=False,width=1650, height=(Top*HeightCell + HeightHeader + 180))
+    fig.update_layout(dragmode=False,width=1650, height=(Top*HeightCell + HeightHeader))
     return fig
     
 def CreateArrow(data,fig):
-
     Top = len(data.index)
     HeadTable = [StrHead+"Color"  for StrHead in HeaderTemplate]
     for col in range(len(HeadTable)-1):
@@ -55,13 +54,13 @@ def CreateSubPlot(data):
     rows=1,cols=NumSubPlot,
     horizontal_spacing=0.0,
     specs=[[{"type": "table"},{"type": "scatter"}]*int(NumSubPlot//2) +[{"type": "table"}]])
-    fig.update_layout(plot_bgcolor="#dfe3ee",paper_bgcolor='#dfe3ee')
-
+    fig.update_layout(plot_bgcolor="#dfe3ee",paper_bgcolor='red',
+                        margin=dict(l=0,r=0,t=0,b=0))
     return fig
 def Visual_1(data,col):
     data = preproc.SelectDataVisual1(data,col)
     fig = CreateSubPlot(data)
     fig = CreateTable(data,fig)
     fig = CreateArrow(data,fig)
-
+    
     return fig
