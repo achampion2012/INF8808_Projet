@@ -12,16 +12,23 @@ def draw_scatter_followers(data):
     return fig
 
 def draw_barchart_type(data):
-    fig = px.bar(data.groupby(["type"]).median(),
-                 y="reaction",
-                fig.update_traces(marker_color='rgb(59,89,152)')
-                fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',
-                title_x=0.5,
-                font_color='rgb(59,89,152)')
+    fig = px.bar(
+        data.groupby(["type"]).median(), 
+        y="reaction"
+    )
+    fig.update_traces(
+        marker_color='rgb(59,89,152)'
+    )
+    fig.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        title_x=0.5,
+        font_color='rgb(59,89,152)'
+    )
                  
     fig.update_layout(
         yaxis={"title":"Nombre de réactions médian"}, 
-        xaxis={'categoryorder':'array', 'categoryarray':["Live Video", "Photo", "Video", "Status", "Album", "Link"], "title":"Type de publication"})
+        xaxis={'categoryorder':'array', 'categoryarray':["Live Video", "Photo", "Video", "Status", "Album", "Link"], "title":"Type de publication"}
+    )
                  
     return fig
