@@ -18,7 +18,6 @@ import plotly.graph_objects as go
 
 import preprocess as preproc
 import viz
-import helper
 import heatmaps
 
 from visualization_1 import Visual_1
