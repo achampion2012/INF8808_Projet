@@ -9,6 +9,15 @@ def draw_scatter_followers(data):
         title_x=0.5,
         font_color='rgb(59,89,152)'
     )
+    
+    hover_template = (
+        "<b>Followers :</b> %{x}<br>" +
+        "<b>Reactions :</b> %{y}<br>" + 
+        "<extra></extra>"
+    )
+    
+    fig.update_traces(hovertemplate=hover_template)
+    
     return fig
 
 def draw_barchart_type(data):
@@ -16,9 +25,17 @@ def draw_barchart_type(data):
         data.groupby(["type"]).median(), 
         y="reaction"
     )
+    
+    hover_template = (
+        "<b>Type de publication :</b> %{x}<br>" +
+        "<b>Reactions (median) :</b> %{y}<br>" + 
+        "<extra></extra>")
+    
     fig.update_traces(
-        marker_color='rgb(59,89,152)'
+        marker_color='rgb(59,89,152)',
+        hovertemplate=hover_template
     )
+    
     fig.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
