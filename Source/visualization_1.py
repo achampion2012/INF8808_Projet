@@ -26,7 +26,7 @@ def CreateTable(data,fig):
         row=1,col=subplot
         )
         subplot = subplot + 2
-    fig.update_layout(dragmode=False,width=1650, height=(Top*HeightCell + HeightHeader))
+    fig.update_layout(dragmode=False,width=1500, height=(Top*HeightCell + HeightHeader))
     return fig
     
 def CreateArrow(data,fig):
