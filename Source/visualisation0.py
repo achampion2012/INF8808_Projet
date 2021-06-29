@@ -21,7 +21,15 @@ def draw_average_lang():
     fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',
     title_x=0.5,
-    font_color='rgb(59,89,152)')
+    font_color='rgb(59,89,152)'),
+    
+     hover_template = (
+        "<b>Type de publication :</b> %{x}<br>" +
+        "<b>Nombre de publication :</b> %{y}<br>" + 
+        "<extra></extra>"
+    )
+        
+    fig.update_traces(hovertemplate=hover_template)
 
     return fig
     
@@ -40,6 +48,14 @@ def draw_average_type():
     plot_bgcolor='rgba(0,0,0,0)',
     title_x=0.5,
     font_color='rgb(59,89,152)')
+    
+    hover_template = (
+        "<b>Langue de publication :</b> %{x}<br>" +
+        "<b>Nombre de publication :</b> %{y}<br>" + 
+        "<extra></extra>"
+    )
+        
+    fig.update_traces(hovertemplate=hover_template)
 
     return fig
     
