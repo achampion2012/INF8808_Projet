@@ -30,7 +30,6 @@ def draw_average_lang():
     plot_bgcolor='rgba(0,0,0,0)',
     title_x=0.5,
     font_color='rgb(59,89,152)')
-    )
         
     fig.update_traces()
 
